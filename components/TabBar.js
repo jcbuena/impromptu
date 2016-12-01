@@ -5,7 +5,7 @@ import ReactNative from 'react-native';
 const styles = require('../styles.js')
 const constants = styles.constants;
 const { StyleSheet, TabBarIOS, Text, View} = ReactNative;
-var base64Icon = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAABLCAQAAACSR7JhAAADtUlEQVR4Ac3YA2Bj6QLH0XPT1Fzbtm29tW3btm3bfLZtv7e2ObZnms7d8Uw098tuetPzrxv8wiISrtVudrG2JXQZ4VOv+qUfmqCGGl1mqLhoA52oZlb0mrjsnhKpgeUNEs91Z0pd1kvihA3ULGVHiQO2narKSHKkEMulm9VgUyE60s1aWoMQUbpZOWE+kaqs4eLEjdIlZTcFZB0ndc1+lhB1lZrIuk5P2aib1NBpZaL+JaOGIt0ls47SKzLC7CqrlGF6RZ09HGoNy1lYl2aRSWL5GuzqWU1KafRdoRp0iOQEiDzgZPnG6DbldcomadViflnl/cL93tOoVbsOLVM2jylvdWjXolWX1hmfZbGR/wjypDjFLSZIRov09BgYmtUqPQPlQrPapecLgTIy0jMgPKtTeob2zWtrGH3xvjUkPCtNg/tm1rjwrMa+mdUkPd3hWbH0jArPGiU9ufCsNNWFZ40wpwn+62/66R2RUtoso1OB34tnLOcy7YB1fUdc9e0q3yru8PGM773vXsuZ5YIZX+5xmHwHGVvlrGPN6ZSiP1smOsMMde40wKv2VmwPPVXNut4sVpUreZiLBHi0qln/VQeI/LTMYXpsJtFiclUN+5HVZazim+Ky+7sAvxWnvjXrJFneVtLWLyPJu9K3cXLWeOlbMTlrIelbMDlrLenrjEQOtIF+fuI9xRp9ZBFp6+b6WT8RrxEpdK64BuvHgDk+vUy+b5hYk6zfyfs051gRoNO1usU12WWRWL73/MMEy9pMi9qIrR4ZpV16Rrvduxazmy1FSvuFXRkqTnE7m2kdb5U8xGjLw/spRr1uTov4uOgQE+0N/DvFrG/Jt7i/FzwxbA9kDanhf2w+t4V97G8lrT7wc08aA2QNUkuTfW/KimT01wdlfK4yEw030VfT0RtZbzjeMprNq8m8tnSTASrTLti64oBNdpmMQm0eEwvfPwRbUBywG5TzjPCsdwk3IeAXjQblLCoXnDVeoAz6SfJNk5TTzytCNZk/POtTSV40NwOFWzw86wNJRpubpXsn60NJFlHeqlYRbslqZm2jnEZ3qcSKgm0kTli3zZVS7y/iivZTweYXJ26Y+RTbV1zh3hYkgyFGSTKPfRVbRqWWVReaxYeSLarYv1Qqsmh1s95S7G+eEWK0f3jYKTbV6bOwepjfhtafsvUsqrQvrGC8YhmnO9cSCk3yuY984F1vesdHYhWJ5FvASlacshUsajFt2mUM9pqzvKGcyNJW0arTKN1GGGzQlH0tXwLDgQTurS8eIQAAAABJRU5ErkJggg==';
+var base64Icon = 'data:image/png;base64,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'
 
 export default class TabBarExample extends Component {
   static title = '<TabBarIOS>';
@@ -32,17 +32,17 @@ export default class TabBarExample extends Component {
       <TabBarIOS
         unselectedTintColor="yellow"
         tintColor="white"
-        barTintColor="darkslateblue">
+        barTintColor="aliceblue">
         <TabBarIOS.Item
-          title="Blue Tab"
-          icon={{uri: base64Icon, scale: 3}}
-          selected={this.state.selectedTab === 'blueTab'}
+          title="Feed"
+          icon={{uri: base64Icon, scale: 10}}
+          selected={this.state.selectedTab === 'Feed'}
           onPress={() => {
             this.setState({
-              selectedTab: 'blueTab',
+              selectedTab: 'Feed',
             });
           }}>
-          {this._renderContent('#414A8C', 'Blue Tab')}
+          {this._renderContent('#414A8C', 'Feed')}
         </TabBarIOS.Item>
         <TabBarIOS.Item
           systemIcon="history"

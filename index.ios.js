@@ -11,15 +11,15 @@ const {
   Navigator,
   TouchableHighlight,
 } = ReactNative;
-import ActionButton from './components/ActionButton';
 import StatusBar from './components/StatusBar';
 import ListItem from './components/ListItem';
 import MyScene from './components/MyScene';
 import TabBar from './components/TabBar';
+import Card from './components/Card'
 const styles = require('./styles.js')
 
 
-class AwesomeProject extends Component {
+class Impromptu extends Component {
   constructor(props) {
     super(props);
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -32,17 +32,15 @@ class AwesomeProject extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={{flex: 1}}>
 
         <StatusBar title="Impromptu" />
         <ScrollView>
+
+         <Card />
           <Text style={{fontSize:96}}>Scroll me plz</Text>
-          <Text style={{fontSize:96}}>If you like</Text>
-          <Text style={{fontSize:96}}>If you like</Text>
-          <Text style={{fontSize:96}}>If you like</Text>
         </ScrollView>
 
-        <ActionButton title="View" />
         <TabBar />
 
     </View>
@@ -51,4 +49,4 @@ class AwesomeProject extends Component {
 }
 
 
-AppRegistry.registerComponent('AwesomeProject', function() { return AwesomeProject });
+AppRegistry.registerComponent('impromptu', function() { return Impromptu });
