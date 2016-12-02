@@ -96,7 +96,7 @@ export default class Card extends Component {
 
           <View style={{flex: 1, flexDirection: 'row', marginLeft: 15, marginVertical: 10}}>
             <Image
-            source = {require('../img/diego-circle.gif')} style={{width: 45, height: 45}}/>
+            source = {require('../img/qingping-circle.gif')} style={{width: 45, height: 45}}/>
             <View style={{ marginLeft: 20, paddingTop: 10}}>
               <TextInput
                 multiline = {true}
