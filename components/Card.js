@@ -6,8 +6,6 @@ const styles = require('../styles.js')
 const constants = styles.constants;
 const { StyleSheet, Button, Text, View, Image, ListView, TouchableOpacity, TextInput, Alert} = ReactNative;
 
-import Video from 'react-native-video';
-
 export default class Card extends Component {
   constructor(props) {
     super(props);
