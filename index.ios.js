@@ -14,12 +14,12 @@ const {
 import StatusBar from './components/StatusBar';
 import ListItem from './components/ListItem';
 import MyScene from './components/MyScene';
-import TabBar from './components/TabBar';
+import TabBarExample from './components/TabBar';
 import Card from './components/Card'
 const styles = require('./styles.js')
 
 
-class Impromptu extends Component {
+/*class Impromptu extends Component {
   constructor(props) {
     super(props);
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -32,21 +32,14 @@ class Impromptu extends Component {
 
   render() {
     return (
-      <View style={{flex: 1}}>
-
-        <StatusBar title="Impromptu" />
         <ScrollView>
 
          <Card />
           <Text style={{fontSize:96}}>Scroll me plz</Text>
         </ScrollView>
-
-        <TabBar />
-
-    </View>
   );
   }
-}
+}*/
 
 
-AppRegistry.registerComponent('impromptu', function() { return Impromptu });
+AppRegistry.registerComponent('impromptu', function() { return TabBarExample });
