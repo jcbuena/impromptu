@@ -48,11 +48,13 @@ export default class TabBarExample extends Component {
             });
           }}>
           <NavigatorIOS
-        initialRoute={{
-          component: CardScrollView,
-          title: 'Feed',
-        }}
-        style={{flex: 1}}
+            initialRoute={{
+              component: CardScrollView,
+              title: 'Impromptu',
+            }}
+            style={{flex: 1}}
+            barTintColor='#FC4A1A'
+            titleTextColor='white'
           />
         </Icon.TabBarItemIOS>
         <Icon.TabBarItemIOS
@@ -71,7 +73,7 @@ export default class TabBarExample extends Component {
           <NavigatorIOS
         initialRoute={{
           component: CardScrollView,
-          title: 'Feed',
+          title: 'Inbox',
         }}
         style={{flex: 1}}
           />
@@ -89,7 +91,7 @@ export default class TabBarExample extends Component {
           <NavigatorIOS
         initialRoute={{
           component: CardScrollView,
-          title: 'Feed',
+          title: 'Record',
         }}
         style={{flex: 1}}
           />
@@ -105,11 +107,11 @@ export default class TabBarExample extends Component {
             });
           }}>
           <NavigatorIOS
-        initialRoute={{
-          component: CardScrollView,
-          title: 'Feed',
-        }}
-        style={{flex: 1}}
+            initialRoute={{
+              component: CardScrollView,
+              title: 'Send a Challenge',
+            }}
+            style={{flex: 1}}
           />
         </Icon.TabBarItemIOS>
       </TabBarIOS>
