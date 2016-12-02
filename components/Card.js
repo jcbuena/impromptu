@@ -6,6 +6,8 @@ const styles = require('../styles.js')
 const constants = styles.constants;
 const { StyleSheet, Button, Text, View, Image, ListView, TouchableOpacity, TextInput, Alert} = ReactNative;
 
+import VideoView from '../native/Video.js';
+
 export default class Card extends Component {
   constructor(props) {
     super(props);
@@ -83,6 +85,10 @@ export default class Card extends Component {
     )
   }
 
+  onLayout(event){
+  console.log(event.nativeEvent.layout)
+}
+
   render() {
     return (
       <View style={{flex:1, padding:7.5}}>
@@ -98,6 +104,8 @@ export default class Card extends Component {
             </View>
           </View>
 
+          <VideoView style={{width:300, height:300}}
+          paused = {!this.state.playing}/>
 
           {this._getCollapsableComments()}
 
