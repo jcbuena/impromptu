@@ -22,6 +22,10 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		3295FDD51DF11CD600102451 /* VideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3295FDD41DF11CD600102451 /* VideoView.m */; };
+		3295FDD81DF11D9100102451 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3295FDD71DF11D9100102451 /* AVFoundation.framework */; };
+		3295FDDB1DF11E3C00102451 /* VideoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3295FDDA1DF11E3C00102451 /* VideoManager.m */; };
+		3295FDDE1DF1345300102451 /* broadchurch.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3295FDDD1DF1345300102451 /* broadchurch.mp4 */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 /* End PBXBuildFile section */
 
@@ -174,6 +178,12 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = impromptu/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = impromptu/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		3295FDC21DF11CC100102451 /* VideoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VideoView.h; path = impromptu/VideoView.h; sourceTree = "<group>"; };
+		3295FDD41DF11CD600102451 /* VideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VideoView.m; path = impromptu/VideoView.m; sourceTree = "<group>"; };
+		3295FDD71DF11D9100102451 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		3295FDDA1DF11E3C00102451 /* VideoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VideoManager.m; path = impromptu/VideoManager.m; sourceTree = "<group>"; };
+		3295FDDC1DF11E5500102451 /* VideoManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VideoManager.h; path = impromptu/VideoManager.h; sourceTree = "<group>"; };
+		3295FDDD1DF1345300102451 /* broadchurch.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = broadchurch.mp4; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -191,6 +201,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3295FDD81DF11D9100102451 /* AVFoundation.framework in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
@@ -294,6 +305,10 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				3295FDC21DF11CC100102451 /* VideoView.h */,
+				3295FDD41DF11CD600102451 /* VideoView.m */,
+				3295FDDA1DF11E3C00102451 /* VideoManager.m */,
+				3295FDDC1DF11E5500102451 /* VideoManager.h */,
 			);
 			name = impromptu;
 			sourceTree = "<group>";
@@ -305,6 +320,14 @@
 				32FD133C1DF0F84000ABF5A0 /* libReact-tvOS.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		3295FDD61DF11D9100102451 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3295FDD71DF11D9100102451 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		78C398B11ACF4ADC00677621 /* Products */ = {
@@ -345,10 +368,12 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				3295FDDD1DF1345300102451 /* broadchurch.mp4 */,
 				13B07FAE1A68108700A75B9A /* impromptu */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* impromptuTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
+				3295FDD61DF11D9100102451 /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -612,6 +637,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3295FDDE1DF1345300102451 /* broadchurch.mp4 in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);
@@ -651,6 +677,8 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				3295FDD51DF11CD600102451 /* VideoView.m in Sources */,
+				3295FDDB1DF11E3C00102451 /* VideoManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

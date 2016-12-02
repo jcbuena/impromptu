@@ -6,6 +6,8 @@ const styles = require('../styles.js')
 const constants = styles.constants;
 const { StyleSheet, Button, Text, View, Image, ListView, TouchableOpacity, TextInput, Alert} = ReactNative;
 
+import VideoView from '../native/Video.js';
+
 export default class Card extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +17,8 @@ export default class Card extends Component {
         'John', 'Joel', 'James', 'Jimmy', 'Jackson', 'Jillian', 'Julie', 'Devin'
       ]),
 
-      collapsed: true
+      collapsed: true,
+      playing: false,
     };
   }
   
@@ -52,9 +55,13 @@ export default class Card extends Component {
     )
   }
 
+  onLayout(event){
+  console.log(event.nativeEvent.layout)
+}
+
   render() {
     return (
-      <View style={{flex:1, padding:10}}>
+      <View style={{flex:1, padding:10}} onLayout={this.onLayout}>
         <View style={{flex:1, borderRadius: 30, borderColor:"#EEEEEE", backgroundColor:"white"}}>
           <View style={{flex: 1, flexDirection: 'column', marginLeft: 30, marginTop:10, marginVertical: 10}}>
             <View style={{flex: 1, flexDirection: 'row'}}>
@@ -67,6 +74,8 @@ export default class Card extends Component {
             </View>
           </View>
 
+          <VideoView style={{width:300, height:300}}
+          paused = {!this.state.playing}/>
 
           {this._getCollapsableComments()}
 
