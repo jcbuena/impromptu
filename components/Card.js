@@ -98,7 +98,7 @@ export default class Card extends Component {
             </View>
           </View>
 
-          <VideoView style={{width:300, height:300}}
+          <VideoView style={{width:400, height:500}}
           paused = {!this.state.playing}/>
 
           {this._getCollapsableComments()}
@@ -108,10 +108,12 @@ export default class Card extends Component {
             source = {require('../img/qingping-circle.gif')} style={{width: 45, height: 45}}/>
             <View style={{ marginLeft: 20, paddingTop: 10}}>
               <TextInput
+                ref = {(textInput) => this.textInput = textInput}
                 multiline = {true}
                 style={{width: 200, height: 30, fontSize:14, borderBottomColor: 'grey', borderBottomWidth: 1}}
                 placeholder="Add a comment"
                 onChangeText={(text) => this._getCommentView({text})}
+                onFocus={() => this.props.scrollToElement(this.textInput)}
               />
 
             </View>
