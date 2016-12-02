@@ -1,6 +1,7 @@
 'use strict';
 import React, {Component} from 'react';
 import ReactNative from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons'
 const styles = require('../styles.js')
 const { StyleSheet, Text, View} = ReactNative;
 

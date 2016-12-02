@@ -40,18 +40,6 @@ export default class Card extends Component {
   }
 
   _getCollapsableComments() {
-    const comments = this.state.collapsed ?
-      ( <View>
-          {this._getCommentView(this.state.dataSource.getRowData(0, this.state.dataSource.getRowCount() - 2))}
-          {this._getCommentView(this.state.dataSource.getRowData(0, this.state.dataSource.getRowCount() - 1))}
-        </View>
-      ) :
-      (
-        <ListView
-          dataSource={this.state.dataSource}
-          renderRow={(rowData) => this._getCommentView(rowData, "sflksdjfsl;fj sld;kfjsakl;fjas dkl;fjsadkl;lsjfsla djflads;jfkslad;fjklsa d;fjsadlk;fjasdkl; fdjskl;")}
-        />
-      )
     return (
       <View >
         {this.state.dataSource.getRowCount() > 2 &&
@@ -67,7 +55,16 @@ export default class Card extends Component {
             {this.state.collapsed ? "Previous comments...": "Collapse"}
           </Text>
         </TouchableOpacity>)}
-        {comments}
+        {this.state.collapsed ?
+          (<View>
+            {this._getCommentView(this.state.dataSource.getRowData(0, this.state.dataSource.getRowCount() - 2))}
+            {this._getCommentView(this.state.dataSource.getRowData(0, this.state.dataSource.getRowCount() - 1))}
+          </View>)
+          :
+          (<ListView
+            dataSource={this.state.dataSource}
+            renderRow={(rowData, sectionID, rowID) => this._getCommentView(rowData)}
+          />)}
       </View>
     )
   }
