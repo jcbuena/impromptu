@@ -12,20 +12,7 @@ export default class Card extends Component {
   constructor(props) {
     super(props);
     this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    this._data = [
-      {
-        name: 'Qingping',
-        comment: 'Wow I love the artistry in this conducting!'
-      },
-      {
-        name: 'Diego',
-        comment: 'Great! I LOVE THE ARTISTRY TOO!'
-      }
-      // {
-      //   name: 'Chen',
-      //   comment: 'Cool'
-      // }
-    ];
+    this._data = this.props.comments
     this.state = {
       dataSource: this.ds.cloneWithRows(this._data),
       collapsed: true,
@@ -53,25 +40,34 @@ export default class Card extends Component {
   }
 
   _getCollapsableComments() {
+    const comments = this.state.collapsed ?
+      ( <View>
+          {this._getCommentView(this.state.dataSource.getRowData(0, this.state.dataSource.getRowCount() - 2))}
+          {this._getCommentView(this.state.dataSource.getRowData(0, this.state.dataSource.getRowCount() - 1))}
+        </View>
+      ) :
+      (
+        <ListView
+          dataSource={this.state.dataSource}
+          renderRow={(rowData) => this._getCommentView(rowData, "sflksdjfsl;fj sld;kfjsakl;fjas dkl;fjsadkl;lsjfsla djflads;jfkslad;fjklsa d;fjsadlk;fjasdkl; fdjskl;")}
+        />
+      )
     return (
       <View >
         {this.state.dataSource.getRowCount() > 2 &&
            (<TouchableOpacity
           style={{marginVertical: 5}}
           onPress={
-          () => {this.setState({collapsed: true})
+          () => {this.setState({collapsed: !this.state.collapsed})
         }}>
-          <Text style={{fontSize: 14, 
-            textAlign: 'center', 
-            lineHeight: 20, 
+          <Text style={{fontSize: 14,
+            textAlign: 'center',
+            lineHeight: 20,
             color: 'grey'}}>
             {this.state.collapsed ? "Previous comments...": "Collapse"}
           </Text>
         </TouchableOpacity>)}
-        <ListView
-          dataSource={this.state.dataSource}
-          renderRow={(rowData) => this._getCommentView(rowData, "sflksdjfsl;fj sld;kfjsakl;fjas dkl;fjsadkl;lsjfsla djflads;jfkslad;fjklsa d;fjsadlk;fjasdkl; fdjskl;")}
-        />
+        {comments}
       </View>
     )
   }

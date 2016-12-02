@@ -68,8 +68,36 @@ export default class CardScrollView extends React.Component {
 	}
 
 	render() {
+		const card1Data = [
+			{
+        name: 'Qingping',
+        comment: 'Wow I love the artistry in this rapping!'
+      },
+      {
+        name: 'Diego',
+        comment: 'Great! I LOVE THE ARTISTRY TOO!'
+      }
+		]
+		const card2Data = [
+			{
+        name: 'Andrea',
+        comment: 'Cool'
+      },
+			{
+        name: 'Alex',
+        comment: 'Damn I could never do that.'
+      },
+      {
+        name: 'Andreas',
+        comment: 'WOW'
+      },
+			{
+        name: 'Ash',
+        comment: 'Psh I could play piano with my toes.'
+      },
+		]
 		return (
-				<ScrollView style={{backgroundColor:"#EEEEEE"}} scrollEventThrottle={100} 
+				<ScrollView style={{backgroundColor:"#EEEEEE"}} scrollEventThrottle={100}
 					ref = {(scrollView) => this.scrollView = scrollView}
 				onScroll={(event)=>{
 					this.scrollOffset = event.nativeEvent.contentOffset.y;
@@ -86,21 +114,23 @@ export default class CardScrollView extends React.Component {
 					}
 				}}
 				>
-					<Card 
+					<Card
 						ref= {(card) => {
 							this.cards.push(card)
 						}}
 						name="Diego Hernandez"
-						description="is performing a song twice as fast!"
+						description="is performing a rap duet!"
+						comments={card1Data}
 						scrollToElement={(element) => this.scrollToElement(element)}
 						videoName="collabwithsiri"
 					/>
-					<Card 
+					<Card
 						ref= {(card) => {
 							this.cards.push(card)
 						}}
 						name="Diego Hernandez"
-						description="is performing a song twice as fast!" 
+						description="is playing the piano behind his back!"
+						comments={card2Data}
 						scrollToElement={(element) => this.scrollToElement(element)}
 						videoName="upsidedownpiano"
 					/>
