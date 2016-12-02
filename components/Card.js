@@ -57,6 +57,7 @@ export default class Card extends Component {
       return (
           <View >
             <TouchableOpacity
+              style={{marginVertical: 5}}
               onPress={
               () => {this.setState({collapsed: false})
             }}>
@@ -104,7 +105,7 @@ export default class Card extends Component {
             </View>
           </View>
 
-          <VideoView style={{width:300, height:300}}
+          <VideoView style={{width:360, height:300, marginBottom: 10}}
           paused = {!this.state.playing}/>
 
           {this._getCollapsableComments()}
