@@ -18,32 +18,39 @@ export default class Card extends Component {
       collapsed: true
     };
   }
-  
+
   _getCommentView(name, comment) {
-    return <View>
-      <Text>name</Text>
-      <Text>comment</Text>
+    return <View style={{flex: 1, flexDirection: 'column',marginLeft: 30, }}>
+      <Text style={{fontWeight: 'bold'}}>{name}</Text>
+      <Text >{comment}</Text>
     </View>
   }
 
   _getCollapsableComments() {
     if (this.state.collapsed && this.state.dataSource.getRowCount() > 2) {
       return (
-          <View>
-            <Button 
-              title="Previous comment"
+          <View >
+            <TouchableOpacity
               onPress={
-              () => {//this.setState({collapsed: false})
-              this.props.videoSelected()
-            }}/>
+              () => {this.setState({collapsed: false})
+            }}>
+            <Text style={{fontSize: 12, textAlign: 'center'}}>Previous comment</Text>
+            </TouchableOpacity>
             {this._getCommentView(this.state.dataSource.getRowData(0, 0), "blah")}
             {this._getCommentView(this.state.dataSource.getRowData(0, 1), "blah")}
+
           </View>
         )
     }
 
     return (
-      <View style={{flex: 1, flexDirection: 'row', marginLeft: 10, marginVertical: 10}}>
+      <View >
+        <TouchableOpacity
+          onPress={
+          () => {this.setState({collapsed: true})
+        }}>
+        <Text style={{fontSize: 12, textAlign: 'center'}}>Collapse</Text>
+        </TouchableOpacity>
         <ListView
           dataSource={this.state.dataSource}
           renderRow={(rowData) => this._getCommentView(rowData, "blah")}
@@ -70,7 +77,7 @@ export default class Card extends Component {
 
           {this._getCollapsableComments()}
 
-          <View style={{flex: 1, flexDirection: 'row', marginLeft: 10, marginVertical: 10}}>
+          <View style={{flex: 1, flexDirection: 'row', marginLeft: 30, marginVertical: 10}}>
             <Image
             source = {require('../img/diego-circle.gif')} style={{width: 45, height: 45}}/>
             <View style={{borderBottomColor: '#000000', borderBottomWidth: 1, marginLeft: 10,}}>
