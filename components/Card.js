@@ -11,29 +11,35 @@ import VideoView from '../native/Video.js';
 export default class Card extends Component {
   constructor(props) {
     super(props);
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this._data = [
+      {
+        name: 'Qingping',
+        comment: 'Wow I love the artistry in this conducting!'
+      },
+      {
+        name: 'Diego',
+        comment: 'Great! I LOVE THE ARTISTRY TOO!'
+      }
+      // {
+      //   name: 'Chen',
+      //   comment: 'Cool'
+      // }
+    ];
     this.state = {
-      dataSource: ds.cloneWithRows([
-        {
-          name: 'Qingping',
-          comment: 'Wow I love the artistry in this conducting!'
-        },
-        {
-          name: 'Diego',
-          comment: 'Great! I LOVE THE ARTISTRY TOO!'
-        },
-        // {
-        //   name: 'Chen',
-        //   comment: 'Cool'
-        // }
-      ]),
+      dataSource: this.ds.cloneWithRows(this._data),
       collapsed: true,
-      playing: false,
+      comment: ''
     };
   }
 
-  _postComment(){
-
+  _postComment() {
+    const comment = {name: 'Qingping', comment: this.state.comment}
+    this._data = this._data.concat(comment)
+    this.setState({
+      dataSource: this.state.dataSource.cloneWithRows(this._data),
+      comment: ''
+    })
   }
 
   _getCommentView(data) {
@@ -51,13 +57,14 @@ export default class Card extends Component {
       return (
           <View >
             <TouchableOpacity
+              style={{marginVertical: 5}}
               onPress={
               () => {this.setState({collapsed: false})
             }}>
               <Text style={{fontSize: 14, textAlign: 'center', lineHeight: 20, color: 'grey'}}>Previous comments...</Text>
             </TouchableOpacity>
-            {this._getCommentView(this.state.dataSource.getRowData(0, 0))}
-            {this._getCommentView(this.state.dataSource.getRowData(0, 1))}
+            {this._getCommentView(this.state.dataSource.getRowData(0, this.state.dataSource.getRowCount() - 2))}
+            {this._getCommentView(this.state.dataSource.getRowData(0, this.state.dataSource.getRowCount() - 1))}
 
           </View>
         )
@@ -114,13 +121,13 @@ export default class Card extends Component {
                 placeholder="Add a comment"
                 onChangeText={(text) => this._getCommentView({text})}
                 onFocus={() => this.props.scrollToElement(this.textInput)}
+                value={this.state.comment}
               />
 
             </View>
             <View style={{marginLeft: 15, marginTop: 6}}>
-              <Button title="Post" onPress={this._postComment}/>
+              <Button title="Post" onPress={this._postComment.bind(this)}/>
             </View>
-
           </View>
         </View>
       </View>
