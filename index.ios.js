@@ -18,7 +18,7 @@ import TabBarExample from './components/TabBar';
 import Card from './components/Card'
 const styles = require('./styles.js')
 
-
+console.disableYellowBox = true;
 /*class Impromptu extends Component {
   constructor(props) {
     super(props);

@@ -10,6 +10,9 @@ export default class CardScrollView extends React.Component {
 	constructor(props) {
  	   super(props);
  	   this.cards = []
+ 	   this.state = {
+ 	   	expanderHeight: 0
+ 	   }
 	}
 
 	getMeasureFunc(card, top, bottom) {
@@ -38,6 +41,7 @@ export default class CardScrollView extends React.Component {
 	keyboardWillShow (e) {
 	    let newSize = Dimensions.get('window').height - e.endCoordinates.height
 	    this.keyboardHeight = newSize
+	    //this.setState({expanderHeight: e.endCoordinates.height})
 	    this.tryScrollHeight()
 	}
 
@@ -79,33 +83,26 @@ export default class CardScrollView extends React.Component {
 						var card = this.cards[index]
 
 						NativeMethodsMixin.measureInWindow.call(card, this.getMeasureFunc(card, top, bottom))
-
-						/*if ((rect.top < top && rect.bottom > top) || 
-							(rect.top > top && rect.bottom < bottom)) {
-							card.setState({playing: true})
-						} else {
-							card.setState({playing: false})
-						}
-
-						console.log(rect)*/
 					}
 				}}
 				>
 					<Card 
-					ref= {(card) => {
-						this.cards.push(card)
-					}}
-					name="Diego Hernandez"
-					description="is performing a song twice as fast!"
-					scrollToElement={(element) => this.scrollToElement(element)}
+						ref= {(card) => {
+							this.cards.push(card)
+						}}
+						name="Diego Hernandez"
+						description="is performing a song twice as fast!"
+						scrollToElement={(element) => this.scrollToElement(element)}
+						videoName="collabwithsiri"
 					/>
 					<Card 
-					ref= {(card) => {
-						this.cards.push(card)
-					}}
-					name="Diego Hernandez"
-					description="is performing a song twice as fast!" 
-					scrollToElement={(element) => this.scrollToElement(element)}
+						ref= {(card) => {
+							this.cards.push(card)
+						}}
+						name="Diego Hernandez"
+						description="is performing a song twice as fast!" 
+						scrollToElement={(element) => this.scrollToElement(element)}
+						videoName="upsidedownpiano"
 					/>
 				</ScrollView>
 			)

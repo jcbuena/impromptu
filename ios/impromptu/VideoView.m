@@ -14,6 +14,7 @@
 @implementation VideoView
 {
   BOOL _paused;
+  NSString* path;
 }
 
 - (id)init {
@@ -34,10 +35,6 @@
                                              selector:@selector(playerItemDidReachEnd:)
                                                  name:AVPlayerItemDidPlayToEndTimeNotification
                                                object:[self.queue currentItem]];
-    
-    self.videoURL = [[NSBundle mainBundle] URLForResource:@"broadchurch" withExtension:@"mp4"];
-    AVPlayerItem* video = [[AVPlayerItem alloc] initWithURL:self.videoURL];
-    [self.queue insertItem:video afterItem:nil];
     
     _paused = true;
   }
@@ -66,6 +63,23 @@
   
   _paused = paused;
   
+}
+
+- (void) setPath:(NSString*) nextPath {
+  bool playAfter = false;
+  if (!_paused) {
+    self.paused = true;
+    playAfter = true;
+  }
+  
+  [self.queue removeAllItems];
+  self.videoURL = [[NSBundle mainBundle] URLForResource:nextPath withExtension:@"mp4"];
+  AVPlayerItem* video = [[AVPlayerItem alloc] initWithURL:self.videoURL];
+  [self.queue insertItem:video afterItem:nil];
+  
+  if (playAfter) {
+    self.paused = false;
+  }
 }
 
 - (void)layoutSubviews

@@ -53,31 +53,21 @@ export default class Card extends Component {
   }
 
   _getCollapsableComments() {
-    if (this.state.collapsed && this.state.dataSource.getRowCount() >= 2) {
-      return (
-          <View >
-            <TouchableOpacity
-              style={{marginVertical: 5}}
-              onPress={
-              () => {this.setState({collapsed: false})
-            }}>
-              <Text style={{fontSize: 14, textAlign: 'center', lineHeight: 20, color: 'grey'}}>Previous comments...</Text>
-            </TouchableOpacity>
-            {this._getCommentView(this.state.dataSource.getRowData(0, this.state.dataSource.getRowCount() - 2))}
-            {this._getCommentView(this.state.dataSource.getRowData(0, this.state.dataSource.getRowCount() - 1))}
-
-          </View>
-        )
-    }
-
     return (
       <View >
-        <TouchableOpacity
+        {this.state.dataSource.getRowCount() > 2 &&
+           (<TouchableOpacity
+          style={{marginVertical: 5}}
           onPress={
           () => {this.setState({collapsed: true})
         }}>
-        <Text style={{fontSize: 14, textAlign: 'center', lineHeight: 20, color: 'grey'}}>Collapse</Text>
-        </TouchableOpacity>
+          <Text style={{fontSize: 14, 
+            textAlign: 'center', 
+            lineHeight: 20, 
+            color: 'grey'}}>
+            {this.state.collapsed ? "Previous comments...": "Collapse"}
+          </Text>
+        </TouchableOpacity>)}
         <ListView
           dataSource={this.state.dataSource}
           renderRow={(rowData) => this._getCommentView(rowData, "sflksdjfsl;fj sld;kfjsakl;fjas dkl;fjsadkl;lsjfsla djflads;jfkslad;fjklsa d;fjsadlk;fjasdkl; fdjskl;")}
@@ -105,22 +95,25 @@ export default class Card extends Component {
             </View>
           </View>
 
-          <VideoView style={{width:400, height:500}}
+          <VideoView style={{width:360, height:300, marginBottom: 10}}
+          path={this.props.videoName}
           paused = {!this.state.playing}/>
 
           {this._getCollapsableComments()}
 
           <View style={{flex: 1, flexDirection: 'row', marginLeft: 15, marginVertical: 10}}>
             <Image
-            source = {require('../img/qingping-circle.gif')} style={{width: 45, height: 45}}/>
+            source = {require('../img/qingping_circle.png')} style={{width: 45, height: 45}}/>
             <View style={{ marginLeft: 20, paddingTop: 10}}>
               <TextInput
                 ref = {(textInput) => this.textInput = textInput}
                 multiline = {true}
                 style={{width: 200, height: 30, fontSize:14, borderBottomColor: 'grey', borderBottomWidth: 1}}
                 placeholder="Add a comment"
-                onChangeText={(text) => this._getCommentView({text})}
-                onFocus={() => this.props.scrollToElement(this.textInput)}
+                onChangeText={(text) => this.setState({comment: text})}
+                onFocus={() => {
+                  this.props.scrollToElement(this.textInput)
+                }}
                 value={this.state.comment}
               />
 
