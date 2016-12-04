@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -40,6 +39,9 @@
 		C09AB9FFA2F8426CA8BE5F6C /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E06AFD7E433E45B792A4FBC6 /* libRNVectorIcons.a */; };
 		C78AADE4778A446380A0F068 /* libRCTCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FB7C6EC12D448FE87E2F319 /* libRCTCamera.a */; };
 		DFBB01D345A641C582E3BB8D /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C22339DA4DEA41ADBADFA9FF /* Foundation.ttf */; };
+		271480789F8C48C1A15C7521 /* Oxygen-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 72DEBAED5F164DE68E661F4F /* Oxygen-Bold.ttf */; };
+		6DD89ACAD2854562A0D76AD1 /* Oxygen-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FBCE14E2AC484F7380E6E2EB /* Oxygen-Light.ttf */; };
+		58627A5AEC6943DF8906CDF0 /* Oxygen-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 203C5D48A4C24C0EB65E5C9F /* Oxygen-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -242,6 +244,9 @@
 		C7213C5F470F4F008FA17394 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		CDC8040F3725447D89F755DE /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		E06AFD7E433E45B792A4FBC6 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
+		72DEBAED5F164DE68E661F4F /* Oxygen-Bold.ttf */ = {isa = PBXFileReference; name = "Oxygen-Bold.ttf"; path = "../fonts/Oxygen/Oxygen-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FBCE14E2AC484F7380E6E2EB /* Oxygen-Light.ttf */ = {isa = PBXFileReference; name = "Oxygen-Light.ttf"; path = "../fonts/Oxygen/Oxygen-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		203C5D48A4C24C0EB65E5C9F /* Oxygen-Regular.ttf */ = {isa = PBXFileReference; name = "Oxygen-Regular.ttf"; path = "../fonts/Oxygen/Oxygen-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -348,6 +353,9 @@
 				9A1A1850B3E24FD68CA532D6 /* Octicons.ttf */,
 				59AF403E5C3E4B57B970F882 /* SimpleLineIcons.ttf */,
 				C7213C5F470F4F008FA17394 /* Zocial.ttf */,
+				72DEBAED5F164DE68E661F4F /* Oxygen-Bold.ttf */,
+				FBCE14E2AC484F7380E6E2EB /* Oxygen-Light.ttf */,
+				203C5D48A4C24C0EB65E5C9F /* Oxygen-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -800,6 +808,9 @@
 				45C8FE6CFFE048E0B127EBC2 /* Octicons.ttf in Resources */,
 				A244A91491F34DC6A666206E /* SimpleLineIcons.ttf in Resources */,
 				363A0734606541A0B030530F /* Zocial.ttf in Resources */,
+				271480789F8C48C1A15C7521 /* Oxygen-Bold.ttf in Resources */,
+				6DD89ACAD2854562A0D76AD1 /* Oxygen-Light.ttf in Resources */,
+				58627A5AEC6943DF8906CDF0 /* Oxygen-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

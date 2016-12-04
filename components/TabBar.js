@@ -9,6 +9,7 @@ const { StyleSheet, TabBarIOS, Text, View, NavigatorIOS} = ReactNative;
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import CardScrollView from './CardScrollView.js'
+import InboxView from './InboxView.js'
 
 export default class TabBarExample extends Component {
 
@@ -37,7 +38,7 @@ export default class TabBarExample extends Component {
               component: CardScrollView,
               title: 'Impromptu',
             }}
-            style={{flex: 1}}
+            style={{flex: 1, fontFamily: 'Oxygen'}}
             barTintColor='#FC4A1A'
             titleTextColor='white'
           />
@@ -55,10 +56,10 @@ export default class TabBarExample extends Component {
           }}>
             <NavigatorIOS
               initialRoute={{
-                component: CardScrollView,
+                component: InboxView,
                 title: 'Inbox',
               }}
-              style={{flex: 1}}
+              style={{flex: 1, fontFamily: 'Oxygen'}}
               barTintColor='#F7B733'
               titleTextColor='white'
               backButtonIcon= 'Custom Back'
@@ -79,7 +80,7 @@ export default class TabBarExample extends Component {
               component: CardScrollView,
               title: 'Record',
             }}
-            style={{flex: 1}}
+            style={{flex: 1, fontFamily: 'Oxygen'}}
             barTintColor='#4ABDAC'
             titleTextColor='white'
           />
@@ -99,7 +100,7 @@ export default class TabBarExample extends Component {
               component: CardScrollView,
               title: 'Send a Challenge',
             }}
-            style={{flex: 1}}
+            style={{flex: 1, fontFamily: 'Oxygen'}}
             barTintColor='#F7B733'
             titleTextColor='white'
           />

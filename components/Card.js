@@ -34,7 +34,7 @@ export default class Card extends Component {
   _getCommentView(data) {
     return (
       <View style={{marginLeft: 30}}>
-        <Text style={{fontWeight: 'bold', lineHeight: 20, marginBottom: 5, marginTop: 5}}>
+        <Text style={{fontWeight: 'bold', lineHeight: 20, marginBottom: 5, marginTop: 5, fontFamily: 'Oxygen'}}>
           {data.name} <Text style={{fontWeight: 'normal'}}>{data.comment}</Text>
         </Text>
       </View>
@@ -53,7 +53,9 @@ export default class Card extends Component {
           <Text style={{fontSize: 14,
             textAlign: 'center',
             lineHeight: 20,
-            color: 'grey'}}>
+            color: 'grey',
+            fontFamily: 'Oxygen'
+          }}>
             {this.state.collapsed ? "Previous comments...": "Collapse"}
           </Text>
         </TouchableOpacity>)}
@@ -92,8 +94,8 @@ export default class Card extends Component {
               <Image
                 source = {require('../img/diego-circle.gif')} style={{width: 45, height: 45}}/>
               <View style={{flex: 1, flexDirection: 'column',marginLeft: 10, }}>
-                <Text style={{lineHeight: 25, fontWeight: 'bold', marginRight:30}}>{this.props.name} </Text>
-                <Text>{this.props.description}</Text>
+                <Text style={{lineHeight: 25, fontWeight: 'bold', marginRight:30, fontFamily: 'Oxygen'}}>{this.props.name} </Text>
+                <Text style={{fontFamily: 'Oxygen'}}>{this.props.description}</Text>
               </View>
             </View>
           </View>
@@ -111,7 +113,7 @@ export default class Card extends Component {
               <TextInput
                 ref = {(textInput) => this.textInput = textInput}
                 multiline = {true}
-                style={{width: 200, height: 30, fontSize:14, borderBottomColor: 'grey', borderBottomWidth: 1}}
+                style={{width: 200, height: 30, fontSize:14, borderBottomColor: 'grey', borderBottomWidth: 1, fontFamily: 'Oxygen'}}
                 placeholder="Add a comment"
                 onChangeText={(text) => this.setState({comment: text})}
                 onFocus={() => {
