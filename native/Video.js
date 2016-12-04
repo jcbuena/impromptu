@@ -16,7 +16,8 @@ VideoView.propTypes = {
    * is looking straight down onto it.
    */
    paused: React.PropTypes.bool,
-   path: React.PropTypes.string
+   path: React.PropTypes.string,
+   file: React.PropTypes.string
 };
 
 // requireNativeComponent automatically resolves this to "RCTMapManager"

@@ -11,9 +11,7 @@ const {
   Navigator,
   TouchableHighlight,
 } = ReactNative;
-import StatusBar from './components/StatusBar';
 import ListItem from './components/ListItem';
-import MyScene from './components/MyScene';
 import TabBarExample from './components/TabBar';
 import Card from './components/Card'
 const styles = require('./styles.js')
