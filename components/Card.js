@@ -78,14 +78,6 @@ export default class Card extends Component {
   render() {
     return (
       <View style={{flex:1, padding:7.5}}>
-        <Camera
-          ref={(cam) => {
-            this.camera = cam;
-          }}
-          style={{width:500, height:500}}
-          aspect={Camera.constants.Aspect.fill}>
-        </Camera>
-
         <View style={{flex:1, borderRadius: 10, borderColor:"#EEEEEE", backgroundColor:"white"}}>
           <View style={{flex: 1, flexDirection: 'column', marginLeft: 15, marginTop:20, marginVertical: 10}}>
             <View style={{flex: 1, flexDirection: 'row'}}>

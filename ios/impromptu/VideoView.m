@@ -15,6 +15,7 @@
 {
   BOOL _paused;
   NSString* path;
+  NSString* file;
 }
 
 - (id)init {
@@ -65,7 +66,7 @@
   
 }
 
-- (void) setPath:(NSString*) nextPath {
+- (void) setupWithURL:(NSURL*) url {
   bool playAfter = false;
   if (!_paused) {
     self.paused = true;
@@ -73,13 +74,27 @@
   }
   
   [self.queue removeAllItems];
-  self.videoURL = [[NSBundle mainBundle] URLForResource:nextPath withExtension:@"mp4"];
+  self.videoURL = url;
   AVPlayerItem* video = [[AVPlayerItem alloc] initWithURL:self.videoURL];
   [self.queue insertItem:video afterItem:nil];
   
   if (playAfter) {
     self.paused = false;
   }
+}
+
+- (void) setPath:(NSString*) nextPath {
+  if (!nextPath)
+    return;
+  
+  [self setupWithURL:[[NSBundle mainBundle] URLForResource:nextPath withExtension:@"mp4"]];
+}
+
+- (void) setFile:(NSString*) nextPath {
+  if (!nextPath)
+    return;
+  
+  [self setupWithURL:[NSURL fileURLWithPath:nextPath]];
 }
 
 - (void)layoutSubviews
