@@ -1,10 +1,12 @@
 import React from 'react'
-import {ListView, View, Text, TouchableHighlight, Image} from 'react-native'
+import {ListView, View, Text, TouchableOpacity, Image} from 'react-native'
 
 export default class Thread extends React.Component {
   constructor(props) {
     super(props)
   }
+
+
 
   render() {
     const status = this.props.msgCount ?
@@ -24,7 +26,7 @@ export default class Thread extends React.Component {
       <Text style={{color: 'grey'}}>{this.props.timeStamp}</Text>
     )
     return (
-      <TouchableHighlight onPress={null}>
+      <TouchableOpacity onPress={this.props.showCards}>
         <View style={{flex: 1,
                       flexDirection: 'row',
                       paddingVertical: 15,
@@ -43,7 +45,7 @@ export default class Thread extends React.Component {
             {status}
           </View>
         </View>
-      </TouchableHighlight>
+      </TouchableOpacity>
     )
   }
 }

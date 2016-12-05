@@ -2,6 +2,7 @@ import React from 'react'
 import {ListView, View, Text} from 'react-native'
 
 import Thread from './Thread.js'
+import ChallengeView from './ChallengeView.js'
 
 export default class InboxView extends React.Component {
   constructor(props) {
@@ -19,16 +20,26 @@ export default class InboxView extends React.Component {
           name: 'Chen Luo',
           pic: require('../img/chen-circle.gif'),
           msgCount: 0,
-          timeStamp: '4:25pm'
+          timeStamp: '5:00pm'
         },
         {
           name: 'Qingping He',
           pic: require('../img/qingping_circle.png'),
           msgCount: 0,
-          timeStamp: '4:25pm'
+          timeStamp: '12/1/16'
         },
       ])
     }
+  }
+
+  _loadChallengeScreen() {
+    this.props.navigator.push({
+      component: ChallengeView,
+      title: 'Challenge Journey With Diego',
+      leftButtonTitle: '<',
+      tintColor: 'white',
+      onLeftButtonPress: () => this.props.navigator.pop(),
+    })
   }
 
   _renderThreads(data) {
@@ -38,6 +49,7 @@ export default class InboxView extends React.Component {
         pic={data.pic}
         msgCount={data.msgCount}
         timeStamp={data.timeStamp}
+        showCards={this._loadChallengeScreen.bind(this)}
       />
     )
   }
