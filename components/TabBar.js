@@ -8,6 +8,7 @@ const { StyleSheet, TabBarIOS, Text, View, NavigatorIOS} = ReactNative;
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
+import SendChallengeView from './SendChallengeView.js'
 import InboxView from './InboxView.js'
 import ChallengeView from './ChallengeView.js'
 import CardScrollView from './CardScrollView.js'
@@ -91,6 +92,15 @@ export default class TabBarExample extends Component {
                 selectedTab: 'Send Challenge',
               });
             }}>
+            <NavigatorIOS
+              initialRoute={{
+                component: SendChallengeView,
+                title: 'Send Challenge'
+              }}
+              style={{flex: 1}}
+              barTintColor='#F7B733'
+              titleTextColor='white'
+            />
           </Icon.TabBarItemIOS>
         </TabBarIOS>
         <RecorderModal
