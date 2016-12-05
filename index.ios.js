@@ -17,27 +17,19 @@ import Card from './components/Card'
 const styles = require('./styles.js')
 
 console.disableYellowBox = true;
-/*class Impromptu extends Component {
+class Impromptu extends Component {
   constructor(props) {
     super(props);
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    this.state = {
-    dataSource: ds.cloneWithRows([
-      'John', 'Joel', 'James', 'Jimmy', 'Jackson', 'Jillian', 'Julie', 'Devin'
-    ])
-  };
   }
 
   render() {
     return (
-        <ScrollView>
-
-         <Card />
-          <Text style={{fontSize:96}}>Scroll me plz</Text>
-        </ScrollView>
+        <View style={{flex: 1}}>
+          <TabBarExample/>
+        </View>
   );
   }
-}*/
+}
 
 
-AppRegistry.registerComponent('impromptu', function() { return TabBarExample });
+AppRegistry.registerComponent('impromptu', function() { return Impromptu });

@@ -9,6 +9,7 @@ const { StyleSheet, TabBarIOS, Text, View, NavigatorIOS} = ReactNative;
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import InboxView from './InboxView.js'
+import ChallengeView from './ChallengeView.js'
 import CardScrollView from './CardScrollView.js'
 import {RecorderModal} from './RecorderModal.js';
 
@@ -40,7 +41,7 @@ export default class TabBarExample extends Component {
             <NavigatorIOS
               initialRoute={{
                 component: CardScrollView,
-                title: 'Impromptu',
+                title: 'impromptu',
               }}
               style={{flex: 1}}
               barTintColor='#FC4A1A'
@@ -61,7 +62,7 @@ export default class TabBarExample extends Component {
             <NavigatorIOS
               initialRoute={{
                 component: InboxView,
-                title: 'Inbox',
+                title: 'Inbox'
               }}
               style={{flex: 1}}
               barTintColor='#F7B733'
