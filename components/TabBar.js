@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 import ReactNative from 'react-native';
 const styles = require('../styles.js')
 const constants = styles.constants;
-const { StyleSheet, TabBarIOS, Text, View, NavigatorIOS} = ReactNative;
+const { StyleSheet, TabBarIOS, Text, View, NavigatorIOS, AlertIOS} = ReactNative;
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -14,6 +14,8 @@ import ChallengeView from './ChallengeView.js'
 import CardScrollView from './CardScrollView.js'
 import {RecorderModal} from './RecorderModal.js';
 
+import TimerMixin from 'react-timer-mixin';
+
 
 export default class TabBarExample extends Component {
 
@@ -21,6 +23,18 @@ export default class TabBarExample extends Component {
     selectedTab: 'Feed',
     recorderVisible: false,
   };
+
+    componentWillUnmount () {
+      TimerMixin.componentWillUnmount.call(this);
+    }
+
+  closeModal() {
+            this.setState({recorderVisible: false})
+                TimerMixin.setTimeout.call(this, () => {
+      console.log("in timeout")
+      AlertIOS.alert('impromptu', 'Your video has been saved to the camera roll')
+    }, 575);
+          }
 
   render() {
     return (
@@ -106,10 +120,10 @@ export default class TabBarExample extends Component {
             />
           </Icon.TabBarItemIOS>
         </TabBarIOS>
-        <RecorderModal
+        {this.state.recorderVisible && (<RecorderModal
           visible={this.state.recorderVisible}
-          closeModal={() => this.setState({recorderVisible: false})}
-        />
+          closeModal={this.closeModal.bind(this)}
+        />)}
       </View>
     );
   }

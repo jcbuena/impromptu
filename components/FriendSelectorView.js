@@ -62,11 +62,11 @@ export default class FriendSelectorView extends React.Component {
             dataSource={this.state.dataSource}
             renderRow={rowData => this._renderThreads(rowData)}
           />
-          <View style={{flex:1, alignItems: 'center'}}>
+          {/*<View style={{flex:1, alignItems: 'center'}}>
             <TouchableOpacity onPress={this._sendToFriends.bind(this)}>
               <Image source={require('../img/send.png')} />
             </TouchableOpacity>
-          </View>
+          </View>*/}
         </View>
       </View>
     )
