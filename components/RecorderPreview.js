@@ -4,6 +4,9 @@ import VideoView from '../native/Video.js';
 import SelectableImageView from './SelectableImageView.js'
 import FriendSelectorView from './FriendSelectorView.js'
 
+import TimerMixin from 'react-timer-mixin';
+
+
 const saveButtonImage = require("../img/save-button.png")
 const saveButtonSelectedImage = require("../img/save-selected-button.png")
 
@@ -15,6 +18,7 @@ const friendsButtonSelectedImage = require("../img/friends-post-selected-button.
 
 
 export default class RecorderPreview extends React.Component {
+
 	state ={
 		recording: false,
 		saveButtonPressed: false,
@@ -27,12 +31,15 @@ export default class RecorderPreview extends React.Component {
 	}
 
 	postToFriends() {
+		this.props.navigator.popToTop()
+		this.props.closeModal()
+	}
+
+	launchFriendSelector() {
 		this.props.navigator.push({
 			component: FriendSelectorView,
 			rightButtonTitle: "Send",
-			onRightButtonPress: () => {
-				this.props.navigator.popToTop()
-			},
+			onRightButtonPress: () => this.postToFriends.bind(this),
 			title: 'Select Friends'
 		})
 	}
