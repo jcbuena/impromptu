@@ -11,6 +11,9 @@ export default class SendChallengeView extends React.Component {
   _loadFriendSelector() {
     this.props.navigator.push({
       component: FriendSelectorView,
+      passProps: {
+        changeTab: this.props.changeTab
+      },
       title: 'Send to Friends',
       leftButtonTitle: '<',
       tintColor: 'white',
@@ -49,7 +52,7 @@ export default class SendChallengeView extends React.Component {
         }}>
           <View style={{flex: 1, borderBottomWidth: 1.5, borderBottomColor: 'lightgrey', justifyContent: 'center', alignItems: 'center'}}>
             <TouchableOpacity onPress={this._loadFriendSelector.bind(this)}>
-              <Text style={{textAlign: 'center'}}>Perform like you're underwater</Text>
+              <Text style={{textAlign: 'center'}}>Perform like you are underwater</Text>
             </TouchableOpacity>
           </View>
           <View style={{flex: 1, borderBottomWidth: 1.5, borderBottomColor: 'lightgrey', justifyContent: 'center', alignItems: 'center'}}>
