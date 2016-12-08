@@ -15,10 +15,11 @@ export class RecorderModal extends React.Component {
 					initialRoute={{
 						component: Recorder,
 						title: 'Record',
-						leftButtonTitle: '<',
+						leftButtonTitle: 'Cancel',
             onLeftButtonPress: () => this.props.closeModal(),
 					}}
 					style={{flex: 1}}
+					tintColor="white"
 					barTintColor="#4ABDAC"
 					titleTextColor="white"
 			    />
