@@ -71,22 +71,32 @@ export default class TabBarExample extends Component {
       TimerMixin.componentWillUnmount.call(this);
     }
 
+    addComment(number, comment) {
+      console.log(number)
+      console.log(this.state.cards[number])
+      this.state.cards[number].comments.push(comment)
+      this.setState({cards: this.state.cards})
+    }
+
   closeModal(message, cardData, tab) {
     this.setState({
-      selectedTab: tab,
       recorderVisible: false
     })
 
-    if (tab == "Feed") {
-      cardData.comments = []
+    if (cardData) {
+      this.setState({selectedTab: tab})
 
-      this.appendFunc(cardData)
+      if (tab == "Feed") {
+        cardData.comments = []
+
+        this.appendFunc(cardData)
+      }
+
+      TimerMixin.setTimeout.call(this, () => {
+        console.log("in timeout")
+        AlertIOS.alert('impromptu', message)
+      }, 575);
     }
-
-    TimerMixin.setTimeout.call(this, () => {
-      console.log("in timeout")
-      AlertIOS.alert('impromptu', message)
-    }, 575);
   }
 
   render() {
@@ -114,7 +124,8 @@ export default class TabBarExample extends Component {
                   cards: this.state.cards,
                   bindAppendFunction: (appendFunc) => {
                     this.appendFunc = appendFunc;
-                  }
+                  },
+                  addComment: this.addComment.bind(this)
                 }
               }}
               style={{flex: 1}}

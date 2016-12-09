@@ -133,6 +133,7 @@ export default class CardScrollView extends React.Component {
 						ref= {(card) => {
 							this.cards[rowID] = card
 						}}
+						addComment={(comment) => this.props.addComment(rowID, comment)}
 						name={rowData.name}
 						description={rowData.description}
 						comments={rowData.comments}

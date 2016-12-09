@@ -13,7 +13,7 @@ import VideoView from '../native/Video.js';
 export default class Card extends Component {
   constructor(props) {
     super(props);
-    this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => true});
     this._data = this.props.comments
     this.state = {
       dataSource: this.ds.cloneWithRows(this._data),
@@ -23,22 +23,30 @@ export default class Card extends Component {
   }
 
   updateComments(comments) {
-    console.log(comments)
     this._data = comments
 
     this.setState({
-      dataSource: this.ds.cloneWithRows(comments)
+      dataSource: this.state.dataSource.cloneWithRows(this._data)
     })
   }
 
   _postComment() {
     const comment = {name: 'Qingping', comment: this.state.comment}
-    this._data = this._data.concat(comment)
+    if (this._data && this._data.length > 0)
+      this._data = this._data.concat(comment)
+    else
+      this._data = [comment]
+
+    this.props.addComment(comment)
+
+    console.log(this._data)
 
     this.setState({
-      dataSource: this.state.dataSource.cloneWithRows(this._data),
+      dataSource: this.ds.cloneWithRows(this._data),
       comment: ''
     })
+
+    this.forceUpdate()
   }
 
   _getCommentView(data) {
@@ -52,7 +60,7 @@ export default class Card extends Component {
   }
 
   _getCollapsableComments() {
-    if (this.props.comments.length > 0)
+    if (this.state.dataSource.getRowCount() > 0)
     return (
       <View >
         {this.state.dataSource.getRowCount() > 2 &&
@@ -70,7 +78,7 @@ export default class Card extends Component {
             {this.state.collapsed ? "Previous comments...": "Collapse"}
           </Text>
         </TouchableOpacity>)}
-        {this.state.collapsed ?
+        {this.state.collapsed && this.state.dataSource.getRowCount() > 2 ?
           (<View>
             {this._getCommentView(this.state.dataSource.getRowData(0, this.state.dataSource.getRowCount() - 2))}
             {this._getCommentView(this.state.dataSource.getRowData(0, this.state.dataSource.getRowCount() - 1))}
