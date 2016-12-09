@@ -100,21 +100,34 @@ export default class Card extends Component {
     return (
       <View style={{flex:1, padding:7.5}}>
         <View style={{flex:1, borderRadius: 10, borderColor:"#EEEEEE", backgroundColor:"white"}}>
-          <View style={{flex: 1, flexDirection: 'column', marginLeft: 15, marginTop:20, marginVertical: 10}}>
-            <View style={{flex: 1, flexDirection: 'row'}}>
-              <Image
-                source = {require('../img/diego-circle.gif')} style={{width: 45, height: 45}}/>
-              <View style={{flex: 1, flexDirection: 'column',marginLeft: 10, }}>
-                <Text style={{lineHeight: 25, fontWeight: 'bold', marginRight:30, fontFamily: 'Oxygen'}}>{this.props.name} </Text>
-                <Text style={{fontFamily: 'Oxygen'}}>{this.props.description}</Text>
+        {this.props.videoName ?
+            <View style={{flex: 1, flexDirection: 'column', marginLeft: 15, marginTop:20, marginVertical: 10}}>
+              <View style={{flex: 1, flexDirection: 'row'}}>
+                <Image
+                  source = {require('../img/diego-circle.gif')} style={{width: 45, height: 45}}/>
+                <View style={{flex: 1, flexDirection: 'column',marginLeft: 10, }}>
+                  <Text style={{lineHeight: 25, fontWeight: 'bold', marginRight:30, fontFamily: 'Oxygen'}}>{this.props.name} </Text>
+                  <Text style={{fontFamily: 'Oxygen'}}>{this.props.description}</Text>
+                </View>
               </View>
-            </View>
-          </View>
+            </View>:
+            <View style={{flex: 1, flexDirection: 'column', marginLeft: 15, marginTop:20, marginVertical: 10}}>
+              <View style={{flex: 1, flexDirection: 'row'}}>
+                <Image
+                  source = {this.props.pic} style={{width: 45, height: 45}}/>
+                <View style={{flex: 1, flexDirection: 'column',marginLeft: 10, }}>
+                  <Text style={{lineHeight: 25, fontWeight: 'bold', marginRight:30, fontFamily: 'Oxygen'}}>{this.props.name} </Text>
+                  <Text style={{fontFamily: 'Oxygen'}}>{this.props.description}</Text>
+                </View>
+              </View>
+            </View>}
 
-          <VideoView style={{width:360, height:300, marginBottom: 10}}
-            path={this.props.videoName.path}
-            file={this.props.videoName.file}
-            paused = {!this.state.playing}/>
+          {this.props.videoName ? 
+            <VideoView style={{width:360, height:300, marginBottom: 10}}
+              path={this.props.videoName.path}
+              file={this.props.videoName.file}
+              paused = {!this.state.playing}/>:
+            <View style={{width:360, height:300, marginBottom:10}}/>}
 
           {this._getCollapsableComments()}
 
@@ -141,6 +154,6 @@ export default class Card extends Component {
           </View>
         </View>
       </View>
-    );
+    )
   }
 }

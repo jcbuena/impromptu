@@ -2,7 +2,7 @@ import React from 'react'
 import {ListView, View, Text} from 'react-native'
 
 import Thread from './Thread.js'
-import ChallengeView from './ChallengeView.js'
+import CardScrollView from './CardScrollView.js'
 
 export default class InboxView extends React.Component {
   constructor(props) {
@@ -30,11 +30,153 @@ export default class InboxView extends React.Component {
         },
       ])
     }
+
+    this.cards = {
+      "Diego Hernandez": [
+            {
+        name: "Diego Hernandez",
+        description: "is performing a rap duet!",
+        comments: [
+          {
+            name: 'Qingping',
+            comment: 'Wow I love the artistry in this rapping!'
+          },
+          {
+            name: 'Diego',
+            comment: 'Great! I LOVE THE ARTISTRY TOO!'
+          }
+        ],
+        videoName: {
+          path: "collabwithsiri"
+        }
+      },
+      {
+        name: "Diego Hernandez",
+        description: "is playing the piano behind his back!",
+        comments: [
+          {
+            name: 'Andrea',
+            comment: 'Cool'
+          },
+          {
+            name: 'Alex',
+            comment: 'Damn I could never do that.'
+          },
+          {
+            name: 'Andreas',
+            comment: 'WOW'
+          },
+          {
+            name: 'Ash',
+            comment: 'Psh I could play piano with my toes.'
+          },
+        ],
+        videoName: {
+          path: "upsidedownpiano"
+        }
+      }],
+
+      "Chen Luo": [
+            {
+        name: "Diego Hernandez",
+        description: "is performing a rap duet!",
+        comments: [
+          {
+            name: 'Qingping',
+            comment: 'Wow I love the artistry in this rapping!'
+          },
+          {
+            name: 'Diego',
+            comment: 'Great! I LOVE THE ARTISTRY TOO!'
+          }
+        ],
+        videoName: {
+          path: "collabwithsiri"
+        }
+      },
+      {
+        name: "Diego Hernandez",
+        description: "is playing the piano behind his back!",
+        comments: [
+          {
+            name: 'Andrea',
+            comment: 'Cool'
+          },
+          {
+            name: 'Alex',
+            comment: 'Damn I could never do that.'
+          },
+          {
+            name: 'Andreas',
+            comment: 'WOW'
+          },
+          {
+            name: 'Ash',
+            comment: 'Psh I could play piano with my toes.'
+          },
+        ],
+        videoName: {
+          path: "upsidedownpiano"
+        }
+      }],
+
+      "Qingping He": [
+            {
+        name: "Diego Hernandez",
+        description: "is performing a rap duet!",
+        comments: [
+          {
+            name: 'Qingping',
+            comment: 'Wow I love the artistry in this rapping!'
+          },
+          {
+            name: 'Diego',
+            comment: 'Great! I LOVE THE ARTISTRY TOO!'
+          }
+        ],
+        videoName: {
+          path: "collabwithsiri"
+        }
+      },
+      {
+        name: "Diego Hernandez",
+        description: "is playing the piano behind his back!",
+        comments: [
+          {
+            name: 'Andrea',
+            comment: 'Cool'
+          },
+          {
+            name: 'Alex',
+            comment: 'Damn I could never do that.'
+          },
+          {
+            name: 'Andreas',
+            comment: 'WOW'
+          },
+          {
+            name: 'Ash',
+            comment: 'Psh I could play piano with my toes.'
+          },
+        ],
+      }]
+    }
   }
 
-  _loadChallengeScreen() {
+  addComment(card, comment) {
+    card.comments.push(comment)
+  }
+
+  _loadChallengeScreen(name) {
     this.props.navigator.push({
-      component: ChallengeView,
+      component: CardScrollView,
+      passProps: {
+        cards: this.cards[name],
+        bindAppendFunction: (appendFunc) => {
+          this.appendFunc = appendFunc;
+        },
+        addComment: (rowID, comment) => this.addComment(this.state.inboxCards[name][rowID], comment)
+      },
       title: 'Challenge Journey With Diego',
       leftButtonTitle: '<',
       tintColor: 'white',
@@ -42,14 +184,14 @@ export default class InboxView extends React.Component {
     })
   }
 
-  _renderThreads(data) {
+  _renderThreads(rowID, data) {
     return (
       <Thread
         name={data.name}
         pic={data.pic}
         msgCount={data.msgCount}
         timeStamp={data.timeStamp}
-        showCards={this._loadChallengeScreen.bind(this)}
+        showCards={() => this._loadChallengeScreen(data.name)}
       />
     )
   }
@@ -59,7 +201,7 @@ export default class InboxView extends React.Component {
       <View style={{flex: 1}}>
         <ListView
           dataSource={this.state.dataSource}
-          renderRow={rowData => this._renderThreads(rowData)}
+          renderRow={(rowData, sectionID, rowID) => this._renderThreads(rowID, rowData)}
         />
       </View>
     )
