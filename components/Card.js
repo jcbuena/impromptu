@@ -126,8 +126,7 @@ export default class Card extends Component {
             <VideoView style={{width:360, height:300, marginBottom: 10}}
               path={this.props.videoName.path}
               file={this.props.videoName.file}
-              paused = {!this.state.playing}
-              muted={this.props.muted}/>:
+              paused = {!this.state.playing}/>:
             <View style={{width:360, height:300, marginBottom:10}}/>}
 
           {this._getCollapsableComments()}

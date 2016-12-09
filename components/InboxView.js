@@ -165,8 +165,9 @@ export default class InboxView extends React.Component {
       this.cards[name].push(this.props.append.card)
 
       for (data in this.data) {
-        if data.name === name
+        if (data.name === name) {
           this.data.name += 1
+        }
       }
     }
 

@@ -125,12 +125,16 @@ export default class TabBarExample extends Component {
                   bindAppendFunction: (appendFunc) => {
                     this.appendFunc = appendFunc;
                   },
+                  bindMuteFunction: (muteFunc) => {
+                    this.muteFunc = muteFunc
+                  },
                   addComment: this.addComment.bind(this)
                 }
               }}
               style={{flex: 1}}
               barTintColor='#FC4A1A'
               titleTextColor='white'
+              onLeftButtonPress=""
             />
           </Icon.TabBarItemIOS>
           <Icon.TabBarItemIOS
@@ -194,6 +198,8 @@ export default class TabBarExample extends Component {
           visible={this.state.recorderVisible}
           closeModal={this.closeModal.bind(this)}
         />)}
+
+        <View style={{right:0, top:0, width:50, height:50, backgroundColor:"#000000"}}/>
       </View>
     );
   }

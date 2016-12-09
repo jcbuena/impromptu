@@ -38,7 +38,6 @@
                                                object:[self.queue currentItem]];
     
     _paused = true;
-    self.silent = false;
   }
   return self;
 }
@@ -99,6 +98,8 @@
 }
 
 - (void) setMuted: (BOOL) isSilent {
+  return;
+  
   self.queue.muted = isSilent;
 }
 

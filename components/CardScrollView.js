@@ -9,6 +9,7 @@ import NativeMethodsMixin from 'NativeMethodsMixin'
 export default class CardScrollView extends React.Component {
 	constructor(props) {
  	   super(props);
+
  	   this.cards = {}
 
  	   this.cardData = this.props.cards
