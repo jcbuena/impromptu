@@ -18,6 +18,7 @@ VideoView.propTypes = {
    paused: React.PropTypes.bool,
    path: React.PropTypes.string,
    file: React.PropTypes.string,
+   muted: React.PropTypes.bool,
 };
 
 // requireNativeComponent automatically resolves this to "RCTMapManager"

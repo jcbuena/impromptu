@@ -98,8 +98,6 @@
 }
 
 - (void) setMuted: (BOOL) isSilent {
-  return;
-  
   self.queue.muted = isSilent;
 }
 

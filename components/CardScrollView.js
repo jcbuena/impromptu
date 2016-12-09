@@ -17,8 +17,13 @@ export default class CardScrollView extends React.Component {
 
  	   this.ds = new ListView.DataSource({rowHasChanged: () => true});
  	   this.state = {
+ 	   	muted: !this.props.beginPlay,
  	   	expanderHeight: 0,
  	   	dataSource: this.ds.cloneWithRows(this.cardData),
+ 	   }
+
+ 	   if (this.props.beginPlay) {
+ 	   		this.reupdate = true
  	   }
 	}
 
@@ -35,6 +40,13 @@ export default class CardScrollView extends React.Component {
 		}
 
 		this.reupdate = true;
+	}
+
+	muteFunc(isMuted) {
+		console.log(isMuted)
+		for (key in this.cards) {
+			this.cards[key].setState({muted: isMuted})
+		}
 	}
 
 	getMeasureFunc(card, top, bottom) {
@@ -58,6 +70,7 @@ export default class CardScrollView extends React.Component {
 
 	componentWillMount () {
 		this.props.bindAppendFunction(this.appendFunc.bind(this))
+		this.props.bindMuteFunction(this.muteFunc.bind(this))
     	DeviceEventEmitter.addListener('keyboardWillShow', this.keyboardWillShow.bind(this))
   	}
 
@@ -72,6 +85,8 @@ export default class CardScrollView extends React.Component {
 			}
 
 			this.forceUpdate()
+			this.muteFunc(this.state.muted)
+
 			this.reupdate = false
 		}
   	}
@@ -113,7 +128,6 @@ export default class CardScrollView extends React.Component {
 				<ScrollView style={{backgroundColor:"#EEEEEE"}} scrollEventThrottle={100}
 					ref = {(scrollView) => this.scrollView = scrollView}
 				onScroll={(event)=>{
-					console.log("scrolled")
 
 					this.scrollOffset = event.nativeEvent.contentOffset.y;
 

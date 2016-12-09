@@ -172,12 +172,26 @@ export default class InboxView extends React.Component {
     }
 
     this.state = {
+<<<<<<< HEAD
       dataSource: ds.cloneWithRows(data)
     }
   }
 
   addComment(card, comment) {
     card.comments.push(comment)
+=======
+      dataSource: ds.cloneWithRows(this.data),
+      muted: false
+    }
+  }
+
+  muteFunc(muted) {
+    this.subMuteFunc(muted)
+  }
+
+  componentWillMount() {
+    this.props.bindMuteFunction(this.muteFunc.bind(this))
+>>>>>>> d2eeea2... fukkking mute button finally works
   }
 
   _loadChallengeScreen(name) {
@@ -185,16 +199,26 @@ export default class InboxView extends React.Component {
       component: CardScrollView,
       passProps: {
         cards: this.cards[name],
+        beginPlay: true,
         bindAppendFunction: (appendFunc) => {
           this.appendFunc = appendFunc;
         },
+        bindMuteFunction: (muteFunc) => {
+          this.subMuteFunc = muteFunc
+        },
+        setInboxMuteVisible: this.props.setInboxMuteVisible,
         addComment: (rowID, comment) => this.addComment(this.cards[name][rowID], comment)
       },
       title: 'Challenge Journey With Diego',
       leftButtonTitle: '<',
       tintColor: 'white',
-      onLeftButtonPress: () => this.props.navigator.pop(),
+      onLeftButtonPress: () => {
+        this.props.navigator.pop()
+        this.props.setInboxMuteVisible(false)
+      }
     })
+
+    this.props.setInboxMuteVisible(true)
   }
 
   _renderThreads(rowID, data) {

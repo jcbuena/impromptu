@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 import ReactNative from 'react-native';
 const styles = require('../styles.js')
 const constants = styles.constants;
-const { StyleSheet, TabBarIOS, Text, View, NavigatorIOS, AlertIOS} = ReactNative;
+const { StyleSheet, TabBarIOS, Text, View, NavigatorIOS, AlertIOS, Image, TouchableWithoutFeedback } = ReactNative;
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -18,6 +18,7 @@ import TimerMixin from 'react-timer-mixin';
 
 
 export default class TabBarExample extends Component {
+<<<<<<< HEAD
   state = {
     selectedTab: 'Feed',
     recorderVisible: false,
@@ -33,11 +34,65 @@ export default class TabBarExample extends Component {
           {
             name: 'Diego',
             comment: 'Great! I LOVE THE ARTISTRY TOO!'
+=======
+  constructor(props) {
+    super(props)
+    this.state = {
+      muted: true,
+      unmuteOnFeed: true,
+      inboxMuted: false,
+      inboxMuteButtonVisible: false,
+      selectedTab: 'Feed',
+      recorderVisible: false,
+      loginVisible: true,
+      cards: [
+        {
+          name: "Diego Hernandez",
+          description: "is performing a song twice as fast!",
+          comments: [
+            {
+              name: 'Qingping',
+              comment: 'Wow I love the artistry in this playing!'
+            },
+            {
+              name: 'Diego',
+              comment: 'Great! I LOVE THE ARTISTRY TOO!'
+            }
+          ],
+          videoName: {
+            path: "IMG_5933"
+          }
+        },
+        {
+          name: "Qingping He",
+          description: "is rapping a song twice as slow!",
+          comments: [
+            {
+              name: 'Andrea',
+              comment: 'Cool'
+            },
+            {
+              name: 'Alex',
+              comment: 'Damn I could never do that.'
+            },
+            {
+              name: 'Andreas',
+              comment: 'WOW'
+            },
+            {
+              name: 'Ash',
+              comment: 'Psh I could do that.'
+            },
+          ],
+          videoName: {
+            path: "IMG_5930"
+>>>>>>> d2eeea2... fukkking mute button finally works
           }
         ],
         videoName: {
           path: "collabwithsiri"
         }
+<<<<<<< HEAD
       },
       {
         name: "Diego Hernandez",
@@ -66,6 +121,36 @@ export default class TabBarExample extends Component {
       }
     ]
   };
+=======
+      ]
+    };
+  }
+
+  componentDidUpdate() {
+    console.log("updating component")
+
+    if (!this.state.muted && 
+      (this.state.selectedTab != "Feed" 
+      || this.state.recorderVisible 
+      || this.state.loginVisible)) {
+      console.log("muting no feed")
+      this.muteFunc(true)
+      this.setState({
+        muted: true,
+        unmuteOnFeed: true})
+
+      this.forceUpdate()
+    } else if (this.state.unmuteOnFeed && 
+      this.state.selectedTab === "Feed" &&
+      !this.state.recorderVisible &&
+      !this.state.loginVisible) {
+      console.log("nooooooo")
+      this.muteFunc(false)
+      this.setState({muted:false,unmuteOnFeed: false})
+      this.forceUpdate()
+    }
+  }
+>>>>>>> d2eeea2... fukkking mute button finally works
 
     componentWillUnmount () {
       TimerMixin.componentWillUnmount.call(this);
@@ -120,13 +205,23 @@ export default class TabBarExample extends Component {
               initialRoute={{
                 component: CardScrollView,
                 title: 'impromptu',
+<<<<<<< HEAD
+=======
+                leftButtonTitle: 'Logout',
+                onLeftButtonPress: () => {
+                  this.setState({
+                    loginVisible: true
+                  })
+                },
+                tintColor: "white",
+>>>>>>> d2eeea2... fukkking mute button finally works
                 passProps: {
                   cards: this.state.cards,
                   bindAppendFunction: (appendFunc) => {
                     this.appendFunc = appendFunc;
                   },
                   bindMuteFunction: (muteFunc) => {
-                    this.muteFunc = muteFunc
+                    this.muteFunc = muteFunc;
                   },
                   addComment: this.addComment.bind(this)
                 }
@@ -151,6 +246,20 @@ export default class TabBarExample extends Component {
             <NavigatorIOS
               initialRoute={{
                 component: InboxView,
+                passProps: {
+                  bindMuteFunction: (muteFunc) => {
+                    this.inboxMuteFunc = muteFunc
+                  },
+                  setInboxMuteVisible: (visible) => {
+                    if (!visible) {
+                      this.setState({inboxMuted: false})
+                    }
+
+                    TimerMixin.setTimeout.call(this, () => {
+                      this.setState({inboxMuteButtonVisible: visible})
+                    }, 75);
+                  }
+                },
                 title: 'Inbox'
               }}
               style={{flex: 1}}
@@ -199,7 +308,37 @@ export default class TabBarExample extends Component {
           closeModal={this.closeModal.bind(this)}
         />)}
 
-        <View style={{right:0, top:0, width:50, height:50, backgroundColor:"#000000"}}/>
+        {this.state.selectedTab === "Feed" && 
+        <TouchableWithoutFeedback  onPress={()=>{ 
+          this.muteFunc(!this.state.muted)
+          this.setState({muted: !this.state.muted})
+        }}>
+          <Image 
+            source={this.state.muted ? require("../img/mute.png"): require("../img/unmute.png")}
+            resizeMode={"contain"}
+            style={{
+            position:"absolute",
+            right:15, 
+            top:32, 
+            width:20, 
+            height:20}}/>
+        </TouchableWithoutFeedback >}
+
+        {this.state.selectedTab === "Inbox" && this.state.inboxMuteButtonVisible && 
+        <TouchableWithoutFeedback  onPress={()=>{ 
+          this.inboxMuteFunc(!this.state.inboxMuted)
+          this.setState({inboxMuted: !this.state.inboxMuted})
+        }}>
+          <Image 
+            source={this.state.inboxMuted ? require("../img/mute.png"): require("../img/unmute.png")}
+            resizeMode={"contain"}
+            style={{
+            position:"absolute",
+            right:15, 
+            top:32, 
+            width:20, 
+            height:20}}/>
+        </TouchableWithoutFeedback >}
       </View>
     );
   }
