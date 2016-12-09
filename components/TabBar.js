@@ -39,7 +39,7 @@ export default class TabBarExample extends Component {
     super(props)
     this.state = {
       muted: true,
-      unmuteOnFeed: true,
+      savedMuted: true,
       inboxMuted: false,
       inboxMuteButtonVisible: false,
       selectedTab: 'Feed',
@@ -126,6 +126,7 @@ export default class TabBarExample extends Component {
     };
   }
 
+<<<<<<< HEAD
   componentDidUpdate() {
     console.log("updating component")
 
@@ -152,13 +153,15 @@ export default class TabBarExample extends Component {
   }
 >>>>>>> d2eeea2... fukkking mute button finally works
 
+=======
+>>>>>>> 0388085... finally fixed mute
     componentWillUnmount () {
+        this._mounted = false;
+
       TimerMixin.componentWillUnmount.call(this);
     }
 
     addComment(number, comment) {
-      console.log(number)
-      console.log(this.state.cards[number])
       this.state.cards[number].comments.push(comment)
       this.setState({cards: this.state.cards})
     }
@@ -177,13 +180,34 @@ export default class TabBarExample extends Component {
         this.appendFunc(cardData)
       }
 
-      TimerMixin.setTimeout.call(this, () => {
-        console.log("in timeout")
-        AlertIOS.alert('impromptu', message)
-      }, 575);
+      //this.muteFunc(this.state.muted)
+    }
+
+    this.setMuted(true, false)
+  }
+
+  setMuted(isMuted, saveOrRestore) {
+    if (saveOrRestore) {
+      this.setState({muted: isMuted, savedMuted: this.state.muted})
+      this.muteFunc(isMuted)
+    } else {
+      this.setState({muted: this.state.savedMuted})
+      this.muteFunc(this.state.savedMuted)
+
     }
   }
 
+<<<<<<< HEAD
+=======
+  _setLoginVisible(visible) {
+    if (visible)
+      this.setMuted(true, true)
+    else
+      this.setMuted(false, true)
+   this.setState({loginVisible: visible});
+  }
+
+>>>>>>> 0388085... finally fixed mute
   render() {
     return (
       <View style={{flex:1}}>
@@ -197,6 +221,7 @@ export default class TabBarExample extends Component {
             selectedIconName="ios-list-box"
             selected={this.state.selectedTab === 'Feed'}
             onPress={() => {
+              this.setMuted(false, false)
               this.setState({
                 selectedTab: 'Feed',
               });
@@ -212,6 +237,7 @@ export default class TabBarExample extends Component {
                   this.setState({
                     loginVisible: true
                   })
+                  this.setMuted(false, true)
                 },
                 tintColor: "white",
 >>>>>>> d2eeea2... fukkking mute button finally works
@@ -239,6 +265,8 @@ export default class TabBarExample extends Component {
             selected={this.state.selectedTab === 'Inbox'}
             badge={this.state.notifCount > 0 ? this.state.notifCount : undefined}
             onPress={() => {
+                  this.setMuted(true, true)
+
               this.setState({
                 selectedTab: 'Inbox'
               });
@@ -273,6 +301,8 @@ export default class TabBarExample extends Component {
             selectedIconName="ios-videocam"
             selected={this.state.selectedTab === 'Record'}
             onPress={() => {
+              this.setMuted(true, true)
+
               this.setState({
                 //selectedTab: 'Record',
                 recorderVisible: true
@@ -285,6 +315,8 @@ export default class TabBarExample extends Component {
             selectedIconName="ios-paper-plane"
             selected={this.state.selectedTab === 'Send Challenge'}
             onPress={() => {
+              this.setMuted(true, true)
+
               this.setState({
                 selectedTab: 'Send Challenge',
               });
@@ -310,8 +342,7 @@ export default class TabBarExample extends Component {
 
         {this.state.selectedTab === "Feed" && 
         <TouchableWithoutFeedback  onPress={()=>{ 
-          this.muteFunc(!this.state.muted)
-          this.setState({muted: !this.state.muted})
+          this.setMuted(!this.state.muted, false)
         }}>
           <Image 
             source={this.state.muted ? require("../img/mute.png"): require("../img/unmute.png")}

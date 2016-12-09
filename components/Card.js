@@ -16,7 +16,6 @@ export default class Card extends Component {
     this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => true});
     this._data = this.props.comments
     this.state = {
-      muted: true,
       dataSource: this.ds.cloneWithRows(this._data),
       collapsed: true,
       comment: ''
@@ -127,7 +126,7 @@ export default class Card extends Component {
             <VideoView style={{width:360, height:300, marginBottom: 10}}
               path={this.props.videoName.path}
               file={this.props.videoName.file}
-              muted = {this.state.muted}
+              muted = {this.props.muted}
               paused = {!this.state.playing}/>:
             <View style={{width:360, height:300, marginBottom:10}}/>}
 

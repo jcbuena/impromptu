@@ -6,6 +6,59 @@ import FriendSelectorView from './FriendSelectorView.js'
 export default class SendChallengeView extends React.Component {
   super(props) {
 
+<<<<<<< HEAD
+=======
+    this.state = {
+      chen: false,
+      diego: false,
+      johncarlo: false
+    }
+  }
+
+  
+
+
+
+  _toggleFriend(friend) {
+    console.log('hello')
+    if (friend === 'Chen Luo') {
+      this.setState({chen: !this.state.chen});
+    } else if (friend === 'Diego Hernandez') {
+      this.setState({diego: !this.state.diego});
+    } else if (friend === 'John Carlo Buenaflor') {
+      this.setState({johncarlo: !this.state.johncarlo});
+    }
+    // this.setState({
+    //   [friend]: !this.state[friend]
+    // })
+  }
+
+  _sendToFriends() {
+    if (this.state.chen || this.state.diego || this.state.johncarlo) {
+      AlertIOS.alert(
+        'Challenge Sent!',
+        null,
+        () => {
+          this.props.navigator.pop()
+          this.props.changeTab("Inbox")
+
+          var names = []
+          if (this.state.chen)
+            names.push("Chen Luo")
+          if (this.state.diego)
+            names.push("Diego Hernandez")
+          if (this.state.johncarlo)
+            names.push("John Carlo Buenaflor")
+
+        }
+      )
+    } else {
+      AlertIOS.alert(
+        'Error',
+        'Please select at least one friend.'
+      )
+    }
+>>>>>>> 0388085... finally fixed mute
   }
 
   _loadFriendSelector() {

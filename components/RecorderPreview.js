@@ -31,15 +31,20 @@ export default class RecorderPreview extends React.Component {
 	}
 
 	postToFriends() {
+      AlertIOS.alert('impromptu', "Your video has been sent to your friends", () => {
 		this.props.navigator.popToTop()
-		this.props.closeModal()
+		this.props.closeModal("Your video has been sent to your friends", {}, "Inbox")
+      })
 	}
 
 	launchFriendSelector() {
 		this.props.navigator.push({
+			passProps: {
+				toggleFriend: () => {}
+			},
 			component: FriendSelectorView,
 			rightButtonTitle: "Send",
-			onRightButtonPress: () => this.postToFriends.bind(this),
+			onRightButtonPress: this.postToFriends.bind(this),
 			title: 'Select Friends'
 		})
 	}
@@ -92,7 +97,7 @@ export default class RecorderPreview extends React.Component {
 				        source={require("../img/or-dropshadow.png")}/>
 
 				        <TouchableWithoutFeedback
-				        	onPress = {this.postToFriends.bind(this)}
+				        	onPress = {this.launchFriendSelector.bind(this)}
 							onPressIn = {()=> this.setState({friendsButtonPressed: true})}
 							onPressOut = {()=> this.setState({friendsButtonPressed: false})}>
 							<Image

@@ -17,7 +17,8 @@ export default class Recorder extends React.Component {
 		this.state ={
 			recording: false,
 			prompt: this.challenges[0],
-			nextIndex: 1
+			nextIndex: 1,
+			cameraType: Camera.constants.Type.front
 		}
 	}
 
@@ -74,6 +75,7 @@ export default class Recorder extends React.Component {
 		}}>
 					<Camera
 			          ref="camera"
+			          type={this.state.cameraType}
 			          style={{flex: 1, alignItems: 'center'}}
 			          aspect={Camera.constants.Aspect.fill} />
 					<View style={{
@@ -111,12 +113,42 @@ export default class Recorder extends React.Component {
 						          	 style={{width:20, height:20, marginRight:20, marginTop:60}}/>
 					        </TouchableWithoutFeedback>
 			        </View>
-					<TouchableHighlight onPress={this.triggerRecording.bind(this)}>
-			          	<Image
-			          	source={this.state.recording ? require("../img/record-button-recording.png"): require("../img/record-button.png")}
-			          	resizeMode={"contain"}
-			          	 style={{width: windowWidth, height:70, marginBottom:40, marginTop:-110}}/>
-			        </TouchableHighlight>
+			        <View style={{
+		          		backgroundColor: "#00000000",
+		          		width: windowWidth, 
+		          		height:70, 
+		          		marginBottom:40, 
+		          		marginTop:-110,
+		          		flexDirection:"row",
+		          		justifyContent: 'space-between',
+					}}>
+						<View style={{width:70, height:70}}/>
+						<TouchableHighlight onPress={this.triggerRecording.bind(this)}>
+				          	<Image 
+				          	source={this.state.recording ? require("../img/record-button-recording.png"): require("../img/record-button.png")}
+				          	resizeMode={"contain"}
+				          	 style={{flex:1, height:70}}/>
+				        </TouchableHighlight>
+				        <TouchableHighlight onPress={ () => {
+				        	if (this.state.cameraType === Camera.constants.Type.front) {
+				        		this.setState({cameraType: Camera.constants.Type.back})
+				        	} else {
+				        		this.setState({cameraType: Camera.constants.Type.front})
+				        	}
+				        }}>
+				          	<Image 
+					          	source={require("../img/flip.png")}
+					          	resizeMode={"contain"}
+					          	 style={{
+					          	 	top:15,
+					          	 	right:15,
+					          	 	width:40, 
+					          	 	height:40, 
+					          	 	backgroundColor:"#FFFFFF88",
+					          	 	borderRadius: 20
+					        }}/>
+				        </TouchableHighlight>
+				    </View>
 				</View>);
 	}
 }

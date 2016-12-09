@@ -24,6 +24,7 @@ export default class CardScrollView extends React.Component {
 
  	   if (this.props.beginPlay) {
  	   		this.reupdate = true
+ 	   		this.forceUpdate()
  	   }
 	}
 
@@ -35,18 +36,12 @@ export default class CardScrollView extends React.Component {
 			dataSource: this.ds.cloneWithRows(this.cardData)
 		})
 
-		for (key in this.cards) {
-			var card = this.cards[key]
-		}
-
 		this.reupdate = true;
+		this.forceUpdate();
 	}
 
 	muteFunc(isMuted) {
-		console.log(isMuted)
-		for (key in this.cards) {
-			this.cards[key].setState({muted: isMuted})
-		}
+		this.setState({muted: isMuted, dataSource: this.ds.cloneWithRows(this.cardData)})
 	}
 
 	getMeasureFunc(card, top, bottom) {
@@ -76,17 +71,11 @@ export default class CardScrollView extends React.Component {
 
   	componentDidUpdate() {
   		if (this.reupdate) {
-  			console.log(this.cardData)
-
 	  		for (key in this.cards) {
-	  			console.log(key)
 				var card = this.cards[key]
 				card.updateComments(this.cardData[key].comments)
 			}
-
 			this.forceUpdate()
-			this.muteFunc(this.state.muted)
-
 			this.reupdate = false
 		}
   	}
@@ -94,7 +83,6 @@ export default class CardScrollView extends React.Component {
 	keyboardWillShow (e) {
 	    let newSize = Dimensions.get('window').height - e.endCoordinates.height
 	    this.keyboardHeight = newSize
-	    //this.setState({expanderHeight: e.endCoordinates.height})
 	    this.tryScrollHeight()
 	}
 
@@ -107,10 +95,6 @@ export default class CardScrollView extends React.Component {
 
 	tryScrollHeight() {
 		if (this.inputBottom && this.keyboardHeight) {
-			console.log(this.inputBottom)
-			console.log(this.keyboardHeight)
-			console.log(this.scrollOffset)
-
 			var scrollDelta = this.keyboardHeight - 20 - this.inputBottom
 			console.log(scrollDelta)
 			this.scrollView.scrollTo({y: this.scrollOffset - scrollDelta, animated: true})
