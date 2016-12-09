@@ -342,7 +342,7 @@ export default class TabBarExample extends Component {
 
         {this.state.selectedTab === "Feed" && 
         <TouchableWithoutFeedback  onPress={()=>{ 
-          this.setMuted(!this.state.muted, false)
+          this.setMuted(!this.state.muted, true)
         }}>
           <Image 
             source={this.state.muted ? require("../img/mute.png"): require("../img/unmute.png")}
