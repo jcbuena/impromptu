@@ -139,6 +139,7 @@ export default class CardScrollView extends React.Component {
 						comments={rowData.comments}
 						scrollToElement={(element) => this.scrollToElement(element)}
 						videoName={rowData.videoName}
+						muted = {this.state.muted}
 					/>)}}
           />
 			)

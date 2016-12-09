@@ -8,8 +8,8 @@ export default class InboxView extends React.Component {
   constructor(props) {
     super(props)
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
-    this.state = {
-      dataSource: ds.cloneWithRows([
+
+    this.data = [
         {
           name: 'Diego Hernandez',
           pic: require('../img/diego-circle.gif'),
@@ -28,8 +28,7 @@ export default class InboxView extends React.Component {
           msgCount: 0,
           timeStamp: '12/1/16'
         },
-      ])
-    }
+      ]
 
     this.cards = {
       "Diego Hernandez": [
@@ -161,6 +160,19 @@ export default class InboxView extends React.Component {
         ],
       }]
     }
+
+    for (name in this.props.append.names) {
+      this.cards[name].push(this.props.append.card)
+
+      for (data in this.data) {
+        if data.name === name
+          this.data.name += 1
+      }
+    }
+
+    this.state = {
+      dataSource: ds.cloneWithRows(data)
+    }
   }
 
   addComment(card, comment) {
@@ -175,7 +187,7 @@ export default class InboxView extends React.Component {
         bindAppendFunction: (appendFunc) => {
           this.appendFunc = appendFunc;
         },
-        addComment: (rowID, comment) => this.addComment(this.state.inboxCards[name][rowID], comment)
+        addComment: (rowID, comment) => this.addComment(this.cards[name][rowID], comment)
       },
       title: 'Challenge Journey With Diego',
       leftButtonTitle: '<',

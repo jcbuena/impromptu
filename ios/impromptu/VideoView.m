@@ -38,6 +38,7 @@
                                                object:[self.queue currentItem]];
     
     _paused = true;
+    self.silent = false;
   }
   return self;
 }
@@ -95,6 +96,10 @@
     return;
   
   [self setupWithURL:[NSURL fileURLWithPath:nextPath]];
+}
+
+- (void) setMuted: (BOOL) isSilent {
+  self.queue.muted = isSilent;
 }
 
 - (void)layoutSubviews
