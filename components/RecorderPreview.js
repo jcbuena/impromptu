@@ -56,7 +56,7 @@ export default class RecorderPreview extends React.Component {
 			{	
 				name: "Qingping He",
 				description: this.props.prompt.description,
-				videoName: {path:"collabwithsiri"},
+				videoName: {file:this.props.path},
 			},
 			"Feed")
 	}
@@ -65,7 +65,7 @@ export default class RecorderPreview extends React.Component {
 		return (<View style={{flex: 1, paddingTop: 64}}>
 					<VideoView
 						style={{flex: 1, alignItems: "center"}}
-						path="collabwithsiri"
+						file={this.props.path}
 						paused={false}
 					>
 						<View style={{flex:1}}/>

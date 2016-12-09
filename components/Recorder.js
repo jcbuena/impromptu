@@ -46,12 +46,10 @@ export default class Recorder extends React.Component {
 	}
 
 	triggerRecording() {
-		this.launchPreview("lol")
-		return;
-
 		if (!this.state.recording) {
 			this.refs.camera.capture({
 				audio: true,
+				type: this.state.cameraType,
 				target: Camera.constants.CaptureTarget.disk,
 				mode: Camera.constants.CaptureMode.video})
 				.then(this.launchPreview.bind(this))
@@ -122,14 +120,14 @@ export default class Recorder extends React.Component {
 		          		flexDirection:"row",
 		          		justifyContent: 'space-between',
 					}}>
-						<View style={{width:70, height:70}}/>
-						<TouchableHighlight onPress={this.triggerRecording.bind(this)}>
+						<View style={{width:55, height:70}}/>
+						<TouchableWithoutFeedback onPress={this.triggerRecording.bind(this)}>
 				          	<Image 
 				          	source={this.state.recording ? require("../img/record-button-recording.png"): require("../img/record-button.png")}
 				          	resizeMode={"contain"}
 				          	 style={{flex:1, height:70}}/>
-				        </TouchableHighlight>
-				        <TouchableHighlight onPress={ () => {
+				        </TouchableWithoutFeedback>
+				        <TouchableWithoutFeedback onPress={ () => {
 				        	if (this.state.cameraType === Camera.constants.Type.front) {
 				        		this.setState({cameraType: Camera.constants.Type.back})
 				        	} else {
@@ -147,7 +145,7 @@ export default class Recorder extends React.Component {
 					          	 	backgroundColor:"#FFFFFF88",
 					          	 	borderRadius: 20
 					        }}/>
-				        </TouchableHighlight>
+				        </TouchableWithoutFeedback>
 				    </View>
 				</View>);
 	}
