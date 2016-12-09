@@ -18,23 +18,76 @@ import TimerMixin from 'react-timer-mixin';
 
 
 export default class TabBarExample extends Component {
-
   state = {
     selectedTab: 'Feed',
     recorderVisible: false,
+    cards: [
+      {
+        name: "Diego Hernandez",
+        description: "is performing a rap duet!",
+        comments: [
+          {
+            name: 'Qingping',
+            comment: 'Wow I love the artistry in this rapping!'
+          },
+          {
+            name: 'Diego',
+            comment: 'Great! I LOVE THE ARTISTRY TOO!'
+          }
+        ],
+        videoName: {
+          path: "collabwithsiri"
+        }
+      },
+      {
+        name: "Diego Hernandez",
+        description: "is playing the piano behind his back!",
+        comments: [
+          {
+            name: 'Andrea',
+            comment: 'Cool'
+          },
+          {
+            name: 'Alex',
+            comment: 'Damn I could never do that.'
+          },
+          {
+            name: 'Andreas',
+            comment: 'WOW'
+          },
+          {
+            name: 'Ash',
+            comment: 'Psh I could play piano with my toes.'
+          },
+        ],
+        videoName: {
+          path: "upsidedownpiano"
+        }
+      }
+    ]
   };
 
     componentWillUnmount () {
       TimerMixin.componentWillUnmount.call(this);
     }
 
-  closeModal() {
-            this.setState({recorderVisible: false})
-                TimerMixin.setTimeout.call(this, () => {
+  closeModal(message, cardData, tab) {
+    this.setState({
+      selectedTab: tab,
+      recorderVisible: false
+    })
+
+    if (tab == "Feed") {
+      cardData.comments = []
+
+      this.appendFunc(cardData)
+    }
+
+    TimerMixin.setTimeout.call(this, () => {
       console.log("in timeout")
-      AlertIOS.alert('impromptu', 'Your video has been saved to the camera roll')
+      AlertIOS.alert('impromptu', message)
     }, 575);
-          }
+  }
 
   render() {
     return (
@@ -57,6 +110,12 @@ export default class TabBarExample extends Component {
               initialRoute={{
                 component: CardScrollView,
                 title: 'impromptu',
+                passProps: {
+                  cards: this.state.cards,
+                  bindAppendFunction: (appendFunc) => {
+                    this.appendFunc = appendFunc;
+                  }
+                }
               }}
               style={{flex: 1}}
               barTintColor='#FC4A1A'

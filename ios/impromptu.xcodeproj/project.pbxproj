@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -20,6 +21,9 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		21F647E3AA234277A153133C /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7F6557DF117C49E298754A69 /* Ionicons.ttf */; };
+		271480789F8C48C1A15C7521 /* Oxygen-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 72DEBAED5F164DE68E661F4F /* Oxygen-Bold.ttf */; };
+		321354961DFA214C00350FFD /* IMG_5930.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 321354941DFA214C00350FFD /* IMG_5930.MOV */; };
+		321354971DFA214C00350FFD /* IMG_5927.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 321354951DFA214C00350FFD /* IMG_5927.MOV */; };
 		3295FDEC1DF1657900102451 /* VideoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3295FDEB1DF1657900102451 /* VideoManager.m */; };
 		3295FE001DF1658700102451 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3295FDFF1DF1658700102451 /* AVFoundation.framework */; };
 		3295FE301DF1672B00102451 /* VideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3295FE2F1DF1672B00102451 /* VideoView.m */; };
@@ -29,6 +33,8 @@
 		363A0734606541A0B030530F /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7213C5F470F4F008FA17394 /* Zocial.ttf */; };
 		45C8FE6CFFE048E0B127EBC2 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A1A1850B3E24FD68CA532D6 /* Octicons.ttf */; };
 		47CD5FAAFA564431A39F0A43 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A9594B06430B4FF89EFBDC9B /* Entypo.ttf */; };
+		58627A5AEC6943DF8906CDF0 /* Oxygen-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 203C5D48A4C24C0EB65E5C9F /* Oxygen-Regular.ttf */; };
+		6DD89ACAD2854562A0D76AD1 /* Oxygen-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FBCE14E2AC484F7380E6E2EB /* Oxygen-Light.ttf */; };
 		739BBF4BDB314C8B92D88F31 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CDC8040F3725447D89F755DE /* FontAwesome.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		93485B56A06F452DA0F238A6 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78152404833147AB8F3D235A /* MaterialIcons.ttf */; };
@@ -37,9 +43,6 @@
 		C09AB9FFA2F8426CA8BE5F6C /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E06AFD7E433E45B792A4FBC6 /* libRNVectorIcons.a */; };
 		C78AADE4778A446380A0F068 /* libRCTCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FB7C6EC12D448FE87E2F319 /* libRCTCamera.a */; };
 		DFBB01D345A641C582E3BB8D /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C22339DA4DEA41ADBADFA9FF /* Foundation.ttf */; };
-		271480789F8C48C1A15C7521 /* Oxygen-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 72DEBAED5F164DE68E661F4F /* Oxygen-Bold.ttf */; };
-		6DD89ACAD2854562A0D76AD1 /* Oxygen-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FBCE14E2AC484F7380E6E2EB /* Oxygen-Light.ttf */; };
-		58627A5AEC6943DF8906CDF0 /* Oxygen-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 203C5D48A4C24C0EB65E5C9F /* Oxygen-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -211,8 +214,11 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = impromptu/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = impromptu/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		203C5D48A4C24C0EB65E5C9F /* Oxygen-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Oxygen-Regular.ttf"; path = "../fonts/Oxygen/Oxygen-Regular.ttf"; sourceTree = "<group>"; };
 		2FB7C6EC12D448FE87E2F319 /* libRCTCamera.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTCamera.a; sourceTree = "<group>"; };
 		319A239146304B1CBFEBA64A /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
+		321354941DFA214C00350FFD /* IMG_5930.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = IMG_5930.MOV; sourceTree = "<group>"; };
+		321354951DFA214C00350FFD /* IMG_5927.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = IMG_5927.MOV; sourceTree = "<group>"; };
 		3295FDEA1DF1657900102451 /* VideoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VideoManager.h; path = impromptu/VideoManager.h; sourceTree = "<group>"; };
 		3295FDEB1DF1657900102451 /* VideoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VideoManager.m; path = impromptu/VideoManager.m; sourceTree = "<group>"; };
 		3295FDFF1DF1658700102451 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -224,6 +230,7 @@
 		33637D0DDC7B47CF9FE456D8 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		594D99EB71C445F289CFCD01 /* RCTCamera.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTCamera.xcodeproj; path = "../node_modules/react-native-camera/ios/RCTCamera.xcodeproj"; sourceTree = "<group>"; };
 		59AF403E5C3E4B57B970F882 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
+		72DEBAED5F164DE68E661F4F /* Oxygen-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Oxygen-Bold.ttf"; path = "../fonts/Oxygen/Oxygen-Bold.ttf"; sourceTree = "<group>"; };
 		78152404833147AB8F3D235A /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		7F6557DF117C49E298754A69 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
@@ -234,9 +241,7 @@
 		C7213C5F470F4F008FA17394 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		CDC8040F3725447D89F755DE /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		E06AFD7E433E45B792A4FBC6 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
-		72DEBAED5F164DE68E661F4F /* Oxygen-Bold.ttf */ = {isa = PBXFileReference; name = "Oxygen-Bold.ttf"; path = "../fonts/Oxygen/Oxygen-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		FBCE14E2AC484F7380E6E2EB /* Oxygen-Light.ttf */ = {isa = PBXFileReference; name = "Oxygen-Light.ttf"; path = "../fonts/Oxygen/Oxygen-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		203C5D48A4C24C0EB65E5C9F /* Oxygen-Regular.ttf */ = {isa = PBXFileReference; name = "Oxygen-Regular.ttf"; path = "../fonts/Oxygen/Oxygen-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FBCE14E2AC484F7380E6E2EB /* Oxygen-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Oxygen-Light.ttf"; path = "../fonts/Oxygen/Oxygen-Light.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -461,6 +466,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				321354941DFA214C00350FFD /* IMG_5930.MOV */,
+				321354951DFA214C00350FFD /* IMG_5927.MOV */,
 				3295FE431DF1750000102451 /* collabwithsiri.mp4 */,
 				3295FE441DF1750000102451 /* upsidedownpiano.mp4 */,
 				13B07FAE1A68108700A75B9A /* impromptu */,
@@ -746,6 +753,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3295FE451DF1750A00102451 /* collabwithsiri.mp4 in Resources */,
+				321354971DFA214C00350FFD /* IMG_5927.MOV in Resources */,
 				3295FE461DF1750A00102451 /* upsidedownpiano.mp4 in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
@@ -753,6 +761,7 @@
 				B590940208884BDCA87280B9 /* EvilIcons.ttf in Resources */,
 				739BBF4BDB314C8B92D88F31 /* FontAwesome.ttf in Resources */,
 				DFBB01D345A641C582E3BB8D /* Foundation.ttf in Resources */,
+				321354961DFA214C00350FFD /* IMG_5930.MOV in Resources */,
 				21F647E3AA234277A153133C /* Ionicons.ttf in Resources */,
 				93485B56A06F452DA0F238A6 /* MaterialIcons.ttf in Resources */,
 				45C8FE6CFFE048E0B127EBC2 /* Octicons.ttf in Resources */,

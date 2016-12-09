@@ -22,9 +22,19 @@ export default class Card extends Component {
     };
   }
 
+  updateComments(comments) {
+    console.log(comments)
+    this._data = comments
+
+    this.setState({
+      dataSource: this.ds.cloneWithRows(comments)
+    })
+  }
+
   _postComment() {
     const comment = {name: 'Qingping', comment: this.state.comment}
     this._data = this._data.concat(comment)
+
     this.setState({
       dataSource: this.state.dataSource.cloneWithRows(this._data),
       comment: ''
@@ -42,6 +52,7 @@ export default class Card extends Component {
   }
 
   _getCollapsableComments() {
+    if (this.props.comments.length > 0)
     return (
       <View >
         {this.state.dataSource.getRowCount() > 2 &&
@@ -93,8 +104,9 @@ export default class Card extends Component {
           </View>
 
           <VideoView style={{width:360, height:300, marginBottom: 10}}
-          path={this.props.videoName}
-          paused = {!this.state.playing}/>
+            path={this.props.videoName.path}
+            file={this.props.videoName.file}
+            paused = {!this.state.playing}/>
 
           {this._getCollapsableComments()}
 

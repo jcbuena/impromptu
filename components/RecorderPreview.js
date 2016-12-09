@@ -45,7 +45,15 @@ export default class RecorderPreview extends React.Component {
 	}
 
 	postToFeed() {
-
+		this.props.navigator.popToTop()
+		this.props.closeModal(
+			"Your video has been posted to the public feed", 
+			{	
+				name: "Qingping He",
+				description: this.props.prompt.description,
+				videoName: {path:"collabwithsiri"},
+			},
+			"Feed")
 	}
 
 	render() {

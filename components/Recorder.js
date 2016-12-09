@@ -6,7 +6,13 @@ import RecorderPreview from './RecorderPreview.js'
 export default class Recorder extends React.Component {
   constructor(props) {
 	    super(props)
-		this.challenges = ["Perform a song twice as fast", "Perform as if you're underwater"]
+		this.challenges = [{
+			name: "Perform a song twice as fast",
+			description: "is performing a song twice as fast",
+		},{
+			name:"Perform as if you're underwater",
+			description: "is performing as if he was underwater"
+		}]
 
 		this.state ={
 			recording: false,
@@ -30,7 +36,9 @@ export default class Recorder extends React.Component {
 
 		this.props.navigator.push({
 			component: RecorderPreview,
-			passProps: {path: data.path,
+			passProps: {
+				prompt: this.state.prompt,
+				path: data.path,
 				closeModal: this.props.closeModal},
 			title: 'Preview'
 		})
@@ -84,7 +92,11 @@ export default class Recorder extends React.Component {
 			          			height:50, 
 			          			backgroundColor:"#00000000",
 			          			marginTop:60}}/>
-			          		<Text style={{color:"#FFFFFF", marginTop:60}}>{this.state.prompt}</Text>
+			          		<View style={{marginTop:64, alignItems: 'center'}}>
+			          			<Text style={{color:"#FFFFFF", marginTop:10}}>Your Challenge</Text>
+
+			          			<Text style={{color:"#FFFFFF", marginTop:20}}>{this.state.prompt.name}</Text>
+	    					</View>
 	    					<TouchableWithoutFeedback onPress={() => {
 		    						var ni = this.state.nextIndex
 

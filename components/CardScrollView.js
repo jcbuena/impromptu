@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Card from './Card.js';
-import {ScrollView, View, Dimensions, DeviceEventEmitter} from 'react-native';
+import {ScrollView, View, ListView, Dimensions, DeviceEventEmitter} from 'react-native';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 import NativeMethodsMixin from 'NativeMethodsMixin'
 
@@ -9,10 +9,31 @@ import NativeMethodsMixin from 'NativeMethodsMixin'
 export default class CardScrollView extends React.Component {
 	constructor(props) {
  	   super(props);
- 	   this.cards = []
+ 	   this.cards = {}
+
+ 	   this.cardData = this.props.cards
+
+
+ 	   this.ds = new ListView.DataSource({rowHasChanged: () => true});
  	   this.state = {
- 	   	expanderHeight: 0
+ 	   	expanderHeight: 0,
+ 	   	dataSource: this.ds.cloneWithRows(this.cardData),
  	   }
+	}
+
+	appendFunc(cardData) {
+		this.cards = {}
+
+		this.cardData.splice(0, 0, cardData)
+		this.setState({
+			dataSource: this.ds.cloneWithRows(this.cardData)
+		})
+
+		for (key in this.cards) {
+			var card = this.cards[key]
+		}
+
+		this.reupdate = true;
 	}
 
 	getMeasureFunc(card, top, bottom) {
@@ -35,7 +56,23 @@ export default class CardScrollView extends React.Component {
 	}
 
 	componentWillMount () {
+		this.props.bindAppendFunction(this.appendFunc.bind(this))
     	DeviceEventEmitter.addListener('keyboardWillShow', this.keyboardWillShow.bind(this))
+  	}
+
+  	componentDidUpdate() {
+  		if (this.reupdate) {
+  			console.log(this.cardData)
+
+	  		for (key in this.cards) {
+	  			console.log(key)
+				var card = this.cards[key]
+				card.updateComments(this.cardData[key].comments)
+			}
+
+			this.forceUpdate()
+			this.reupdate = false
+		}
   	}
 
 	keyboardWillShow (e) {
@@ -68,38 +105,15 @@ export default class CardScrollView extends React.Component {
 	}
 
 	render() {
-		const card1Data = [
-			{
-        name: 'Qingping',
-        comment: 'Wow I love the artistry in this rapping!'
-      },
-      {
-        name: 'Diego',
-        comment: 'Great! I LOVE THE ARTISTRY TOO!'
-      }
-		]
-		const card2Data = [
-			{
-        name: 'Andrea',
-        comment: 'Cool'
-      },
-			{
-        name: 'Alex',
-        comment: 'Damn I could never do that.'
-      },
-      {
-        name: 'Andreas',
-        comment: 'WOW'
-      },
-			{
-        name: 'Ash',
-        comment: 'Psh I could play piano with my toes.'
-      },
-		]
 		return (
+
+				<ListView
+					renderScrollComponent={props =>
 				<ScrollView style={{backgroundColor:"#EEEEEE"}} scrollEventThrottle={100}
 					ref = {(scrollView) => this.scrollView = scrollView}
 				onScroll={(event)=>{
+					console.log("scrolled")
+
 					this.scrollOffset = event.nativeEvent.contentOffset.y;
 
 					var {height, width} = Dimensions.get('window');
@@ -107,34 +121,25 @@ export default class CardScrollView extends React.Component {
 					var top = 64
 					var bottom = height - top
 
-					for (index in this.cards) {
-						var card = this.cards[index]
+					for (key in this.cards) {
+						var card = this.cards[key]
 
 						NativeMethodsMixin.measureInWindow.call(card, this.getMeasureFunc(card, top, bottom))
 					}
 				}}
-				>
-					<Card
+				/>}
+            dataSource={this.state.dataSource}
+            renderRow={(rowData, sectionID, rowID) => {return (<Card
 						ref= {(card) => {
-							this.cards.push(card)
+							this.cards[rowID] = card
 						}}
-						name="Diego Hernandez"
-						description="is performing a rap duet!"
-						comments={card1Data}
+						name={rowData.name}
+						description={rowData.description}
+						comments={rowData.comments}
 						scrollToElement={(element) => this.scrollToElement(element)}
-						videoName="collabwithsiri"
-					/>
-					<Card
-						ref= {(card) => {
-							this.cards.push(card)
-						}}
-						name="Diego Hernandez"
-						description="is playing the piano behind his back!"
-						comments={card2Data}
-						scrollToElement={(element) => this.scrollToElement(element)}
-						videoName="upsidedownpiano"
-					/>
-				</ScrollView>
+						videoName={rowData.videoName}
+					/>)}}
+          />
 			)
 	}
 }
