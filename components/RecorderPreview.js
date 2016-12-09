@@ -69,25 +69,25 @@ export default class RecorderPreview extends React.Component {
 							onPress = {this.saveToCameraRoll.bind(this)}
 							onPressIn = {()=> this.setState({saveButtonPressed: true})}
 							onPressOut = {()=> this.setState({saveButtonPressed: false})}>
-							<Image 
+							<Image
 								style= {{width:200, height:60, marginBottom:0}}
 								resizeMode={"contain"}
 								source={this.state.saveButtonPressed ?
 									saveButtonSelectedImage: saveButtonImage}/>
 						</TouchableWithoutFeedback>
-					
+
 						<TouchableWithoutFeedback
 							onPress = {this.postToFeed.bind(this)}
 							onPressIn = {()=> this.setState({feedButtonPressed: true})}
 							onPressOut = {()=> this.setState({feedButtonPressed: false})}>
-							<Image 
+							<Image
 								style= {{width:200, height:60, marginBottom:0}}
 								resizeMode={"contain"}
 								source={this.state.feedButtonPressed ?
 									feedButtonSelectedImage: feedButtonImage}/>
 						</TouchableWithoutFeedback>
 
-				        <Image 
+				        <Image
 				        style={{width:40, height:30, marginTop:-7, marginBottom:-7}}
 				        source={require("../img/or-dropshadow.png")}/>
 
@@ -95,7 +95,7 @@ export default class RecorderPreview extends React.Component {
 				        	onPress = {this.postToFriends.bind(this)}
 							onPressIn = {()=> this.setState({friendsButtonPressed: true})}
 							onPressOut = {()=> this.setState({friendsButtonPressed: false})}>
-							<Image 
+							<Image
 								style= {{width:200, height:60, marginBottom:20}}
 								resizeMode={"contain"}
 								source={this.state.friendsButtonPressed ?

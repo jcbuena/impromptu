@@ -168,6 +168,9 @@ export default class TabBarExample extends Component {
             <NavigatorIOS
               initialRoute={{
                 component: SendChallengeView,
+                passProps: {
+                  changeTab: (tab) => this.setState({selectedTab: tab})
+                },
                 title: 'Send Challenge'
               }}
               style={{flex: 1}}

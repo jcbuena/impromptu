@@ -46,7 +46,11 @@ export default class FriendSelectorView extends React.Component {
   _sendToFriends() {
     AlertIOS.alert(
       'Challenge Sent!',
-      () => this.props.navigator.pop()
+      null,
+      () => {
+        this.props.navigator.pop()
+        this.props.changeTab("Feed")
+      }
     )
   }
 
