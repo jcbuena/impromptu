@@ -39,9 +39,13 @@ export default class TabBarExample extends Component {
     super(props)
     this.state = {
       muted: true,
-      savedMuted: true,
+      savedMuted: false,
+
+
       inboxMuted: false,
       inboxMuteButtonVisible: false,
+      savedInboxMuted: false,
+
       selectedTab: 'Feed',
       recorderVisible: false,
       loginVisible: true,
@@ -174,7 +178,7 @@ export default class TabBarExample extends Component {
     if (cardData) {
       this.setState({selectedTab: tab})
 
-      if (tab == "Feed") {
+      if (tab === "Feed") {
         cardData.comments = []
 
         this.appendFunc(cardData)
@@ -183,7 +187,10 @@ export default class TabBarExample extends Component {
       //this.muteFunc(this.state.muted)
     }
 
-    this.setMuted(true, false)
+    if (this.state.selectedTab === "Feed")
+      this.setMuted(true, false)
+    else if (this.state.selectedTab === "Inbox")
+      this.setInboxMuted(true, false)
   }
 
   setMuted(isMuted, saveOrRestore) {
@@ -193,17 +200,46 @@ export default class TabBarExample extends Component {
     } else {
       this.setState({muted: this.state.savedMuted})
       this.muteFunc(this.state.savedMuted)
-
     }
+
+    this.forceUpdate()
+  }
+
+  setInboxMuted(isMuted, saveOrRestore) {
+    if (saveOrRestore) {
+      this.setState({inboxMuted: isMuted, savedInboxMuted: this.state.inboxMuted})
+
+      if (this.inboxMuteFunc)
+        this.inboxMuteFunc(isMuted)
+    } else {
+      this.setState({inboxMuted: this.state.savedInboxMuted})
+      if (this.inboxMuteFunc)
+        this.inboxMuteFunc(this.state.savedInboxMuted)
+    }
+
+        this.forceUpdate()
+
   }
 
 <<<<<<< HEAD
 =======
   _setLoginVisible(visible) {
-    if (visible)
+    if (visible) {
+          if (this.state.selectedTab === "Feed")
+
       this.setMuted(true, true)
-    else
+        else if (this.state.selectedTab === "Inbox")
+
+      this.setInboxMuted(true, true)
+    }
+    else {
+                if (this.state.selectedTab === "Feed")
+
       this.setMuted(false, true)
+            else if (this.state.selectedTab === "Inbox")
+
+      this.setInboxMuted(false, true)
+    }
    this.setState({loginVisible: visible});
   }
 
@@ -222,6 +258,7 @@ export default class TabBarExample extends Component {
             selected={this.state.selectedTab === 'Feed'}
             onPress={() => {
               this.setMuted(false, false)
+              this.setInboxMuted(true, true)
               this.setState({
                 selectedTab: 'Feed',
               });
@@ -237,7 +274,11 @@ export default class TabBarExample extends Component {
                   this.setState({
                     loginVisible: true
                   })
-                  this.setMuted(false, true)
+
+                  if (this.state.selectedTab === "Inbox")
+                    this.setInboxMuted(true, true)
+                  else if (this.state.selectedTab === "Feed")
+                  this.setMuted(true, true)
                 },
                 tintColor: "white",
 >>>>>>> d2eeea2... fukkking mute button finally works
@@ -265,7 +306,8 @@ export default class TabBarExample extends Component {
             selected={this.state.selectedTab === 'Inbox'}
             badge={this.state.notifCount > 0 ? this.state.notifCount : undefined}
             onPress={() => {
-                  this.setMuted(true, true)
+              this.setMuted(true, true)
+              this.setInboxMuted(true, false)
 
               this.setState({
                 selectedTab: 'Inbox'
@@ -280,7 +322,9 @@ export default class TabBarExample extends Component {
                   },
                   setInboxMuteVisible: (visible) => {
                     if (!visible) {
-                      this.setState({inboxMuted: false})
+                      this.setInboxMuted(true, true)
+                    } else {
+                      this.setInboxMuted(false, true)
                     }
 
                     TimerMixin.setTimeout.call(this, () => {
@@ -301,7 +345,10 @@ export default class TabBarExample extends Component {
             selectedIconName="ios-videocam"
             selected={this.state.selectedTab === 'Record'}
             onPress={() => {
+              if (this.state.selectedTab === "Feed")
               this.setMuted(true, true)
+            else if (this.state.selectedTab === "Inbox")
+              this.setInboxMuted(true, true)
 
               this.setState({
                 //selectedTab: 'Record',
@@ -316,6 +363,7 @@ export default class TabBarExample extends Component {
             selected={this.state.selectedTab === 'Send Challenge'}
             onPress={() => {
               this.setMuted(true, true)
+                  this.setInboxMuted(true, true)
 
               this.setState({
                 selectedTab: 'Send Challenge',
@@ -357,8 +405,7 @@ export default class TabBarExample extends Component {
 
         {this.state.selectedTab === "Inbox" && this.state.inboxMuteButtonVisible && 
         <TouchableWithoutFeedback  onPress={()=>{ 
-          this.inboxMuteFunc(!this.state.inboxMuted)
-          this.setState({inboxMuted: !this.state.inboxMuted})
+          this.setInboxMuted(!this.state.inboxMuted, true)
         }}>
           <Image 
             source={this.state.inboxMuted ? require("../img/mute.png"): require("../img/unmute.png")}

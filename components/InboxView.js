@@ -186,6 +186,7 @@ export default class InboxView extends React.Component {
   }
 
   muteFunc(muted) {
+    if (this.subMuteFunc)
     this.subMuteFunc(muted)
   }
 

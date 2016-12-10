@@ -16,6 +16,7 @@
   BOOL _paused;
   NSString* path;
   NSString* file;
+  BOOL silent;
 }
 
 - (id)init {
@@ -38,6 +39,8 @@
                                                object:[self.queue currentItem]];
     
     _paused = true;
+    
+    self->silent = false;
   }
   return self;
 }
@@ -98,6 +101,7 @@
 }
 
 - (void) setMuted: (BOOL) isSilent {
+  self->silent = isSilent;
   self.queue.muted = isSilent;
 }
 

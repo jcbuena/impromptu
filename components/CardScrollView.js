@@ -104,6 +104,19 @@ export default class CardScrollView extends React.Component {
 		}
 	}
 
+	componentWillUpdate() {
+				var {height, width} = Dimensions.get('window');
+
+		var top = 64
+		var bottom = height - top
+
+		for (key in this.cards) {
+			var card = this.cards[key]
+
+			NativeMethodsMixin.measureInWindow.call(card, this.getMeasureFunc(card, top, bottom))
+		}
+	}
+
 	render() {
 		return (
 
